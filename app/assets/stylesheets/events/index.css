@@ -1,8 +1,42 @@
-.title {
+.right-header {
   margin: auto;
-  text-align: center;
+  display: flex;
   width: 300px;
   height: 50px;
+}
+
+/* タイトル・ログイン・新規登録ボタン */
+.title {
+  text-align: center;
+}
+
+.lists-right {
+  list-style: none;
+}
+
+.user-nickname {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #333333;
+  font-weight: bold;
+}
+
+
+.logout {
+  text-decoration: none;
+  color: #333333;
+}
+
+.login {
+  text-decoration: none;
+  line-height: 32px;
+  margin-right: 3vw;
+  color: #333333;
+}
+
+.sign-up {
+  text-decoration: none;
+  color: #333333;
 }
 
 .main {

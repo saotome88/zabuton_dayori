@@ -3,7 +3,19 @@
   <head>
     <!-- フォントはあとで変更する。丸明オールドに近いものを使用予定。 -->
     <meta charset="UTF-8">
-    <title>ざぶとんだより</title>
+    <div class='right-header'>
+      <title>ざぶとんだより</title>
+      <ul class='lists-right'>
+        <%# ログイン時の見た目設定 %>
+        <% if user_signed_in? %>
+          <li><%= link_to " さんはログイン中", "#", class: "user-nickname"%></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%></li>
+        <% else %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+        <% end %>
+      </ul>
+    </div>
   </head>
   <body>
     <!-- タイトル -->
