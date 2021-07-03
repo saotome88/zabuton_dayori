@@ -1,0 +1,125 @@
+.right-header {
+  margin: auto;
+  display: flex;
+  width: 300px;
+  height: 50px;
+}
+
+/* タイトル・ログイン・新規登録ボタン */
+.title {
+  text-align: center;
+}
+
+.lists-right {
+  list-style: none;
+}
+
+.user-nickname {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #333333;
+  font-weight: bold;
+}
+
+
+.logout {
+  text-decoration: none;
+  color: #333333;
+}
+
+.login {
+  text-decoration: none;
+  line-height: 32px;
+  margin-right: 3vw;
+  color: #333333;
+}
+
+.sign-up {
+  text-decoration: none;
+  color: #333333;
+}
+
+.main {
+  background-color: black;
+  margin: auto;
+  width: 800px;
+  height: 450px;
+}
+
+/* 日付 */
+.schedule {
+  background-color: yellow;
+  margin: auto;
+  text-align: center;
+  height: 25px;
+}
+
+/* ステージの場所・昼夜・出演者情報 */
+.stage-info {
+  background-color: pink;
+  height: 225px;
+}
+
+#tabcontrol {
+  background-color: white;
+  text-align: right;
+  padding-right: 10px;
+  height: 25px;
+}
+
+a {
+  text-decoration: none;
+  color: gray;
+}
+
+/* タブにマウスポインタが載ったとき */
+#tabcontrol a:hover {
+  text-decoration: underline;       /* 文字に下線を引く */
+}
+
+/* タブの中身・出演者一覧 */
+.comedian {
+  background-color: greenyellow;
+  height: 200px;
+  width: 800px;
+  /* 縦書き表記 */
+  writing-mode: vertical-rl;
+  letter-spacing: 3pt;
+  line-height: 250%;
+  font-size: 18px;
+}
+
+
+/* 場所ごとの詳細情報 */
+.info {
+  background-color: turquoise;
+  height: 300px;
+  position: relative;
+  line-height: 150%;
+}
+
+.twitter {
+  background-color: red;
+  width: 400px;
+  height: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.map {
+  background-color: orange;
+  width: 400px;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.calender {
+  background-color: orchid;
+  width: 400px;
+  height: 100%;
+  position: absolute;
+  left: 400px;
+}

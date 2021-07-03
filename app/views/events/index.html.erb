@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <!-- フォントはあとで変更する。丸明オールドに近いものを使用予定。 -->
+    <meta charset="UTF-8">
+    <div class='right-header'>
+      <title>ざぶとんだより</title>
+      <ul class='lists-right'>
+        <%# ログイン時の見た目設定 %>
+        <% if user_signed_in? %>
+          <li><%= link_to "#{current_user.nickname}さんはログイン中", "#", class: "user-nickname"%></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%></li>
+        <% else %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </head>
+  <body>
+    <!-- タイトル -->
+    <h1 class="title">
+      ざぶとんだより
+    </h1>
+    <div class="main">
+      <!-- データを表示する日付 -->
+      <div class="schedule">
+        6月14日の出演情報(※選択した日付が反映)
+      </div>
+      <!-- 寄席の詳細情報 -->
+      <div class=stage-info>
+        <!-- 演芸場をタブで表記する -->
+        <div class="theater" id="tabcontrol">
+          <a href="#tabpage1">新宿末廣亭</a>
+          <a href="#tabpage2">池袋演芸場</a>
+          <a href="#tabpage3">浅草演芸ホール</a>
+          <a href="#tabpage4">上野鈴本</a>
+        </div>
+        <!-- 2-出演者情報・縦書きにする -->
+        <div id="tabbody">
+            <div id ="tabpage1" class="comedian">
+              一.春風亭　昇吾<br>
+              一.柳亭　　小痴楽<br>
+              一.三笑亭　小夢<br>
+              一.滝川　　鯉橋<br>
+              一.ポ　ロ　ン<br>
+              一.桂　　　小文治<br>
+              一.ねづっち<br>
+              一.古今亭　寿輔<br>
+              　お　中　入　り<br>
+              一.桂　　　鷹治<br>
+              一.味千代<br>
+              一.笑福亭　福笑<br>
+              一.柳家　　蝉丸<br>
+              一.D51<br>
+              <b>一.桂　　　文治</b>
+            </div>
+            <div id="tabpage2" class="comedian">池袋</div>
+            <div id="tabpage3" class="comedian">浅草</div>
+            <div id="tabpage4" class="comedian">上野鈴本</div>
+        </div>
+        <!-- 詳細情報 -->
+        <div class="info">
+          <!-- 3-左上にTwitter -->
+          <div class="twitter">※Twitter</div>
+          <!-- 4-左下にMAP -->
+          <div class="map">※地図</div>
+          <!-- 5-右側にカレンダー -->
+          <div class="calender">※カレンダー</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
