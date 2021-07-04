@@ -3,25 +3,26 @@
   <head>
     <!-- フォントはあとで変更する。丸明オールドに近いものを使用予定。 -->
     <meta charset="UTF-8">
-    <div class='right-header'>
-      <title>ざぶとんだより</title>
-      <ul class='lists-right'>
-        <%# ログイン時の見た目設定 %>
-        <% if user_signed_in? %>
-          <li><%= link_to "#{current_user.nickname}さんはログイン中", "#", class: "user-nickname"%></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%></li>
-        <% else %>
-          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-        <% end %>
-      </ul>
-    </div>
+    <title>ざぶとんだより</title>
   </head>
+
   <body>
     <!-- タイトル -->
-    <h1 class="title">
-      ざぶとんだより
-    </h1>
+    <div class='header'>
+      <h1 class="title">
+        ざぶとんだより
+      </h1>
+      <ul class='lists-right'>
+      <%# ログイン時の見た目設定 %>
+      <% if user_signed_in? %>
+        <li><%= link_to "#{current_user.nickname}さんはログイン中", "#", class: "user-nickname"%></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <% end %>
+      </ul>
+    </div>
     <div class="main">
       <!-- データを表示する日付 -->
       <div class="schedule">
@@ -62,9 +63,14 @@
         <!-- 詳細情報 -->
         <div class="info">
           <!-- 3-左上にTwitter -->
-          <div class="twitter">※Twitter</div>
+          <div class="twitter">
+            <a class="twitter-timeline" data-lang="ja" data-width="400" data-height="400" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          </div>
           <!-- 4-左下にMAP -->
-          <div class="map">※地図</div>
+          <div class="map", id="map">
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>"></script>
+
+          </div>
           <!-- 5-右側にカレンダー -->
           <div class="calender">※カレンダー</div>
         </div>
