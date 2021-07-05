@@ -72,7 +72,11 @@
 
           </div>
           <!-- 5-右側にカレンダー -->
-          <div class="calender">※カレンダー</div>
+          <div class="calender">
+            <%= month_calendar do |date| %>
+              <%= date.day %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
