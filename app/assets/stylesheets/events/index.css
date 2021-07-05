@@ -1,6 +1,6 @@
 .header {
   margin:auto;
-  width: 800px;
+  width: 100%;
   height: 100px;
 }
 
@@ -42,7 +42,7 @@
 .main {
   background-color: black;
   margin: auto;
-  width: 800px;
+  width: 100%;
   height: 450px;
 }
 
@@ -78,10 +78,11 @@ a {
 }
 
 /* タブの中身・出演者一覧 */
-.comedian {
+/* 昼席の出演者 */
+.comedian-day {
   background-color: greenyellow;
-  height: 300px;
-  width: 800px;
+  height: 400px;
+  width: 100%;
   /* 縦書き表記 */
   writing-mode: vertical-rl;
   letter-spacing: 3pt;
@@ -89,37 +90,38 @@ a {
   font-size: 18px;
 }
 
+/* 夜席の出演者 */
 
 /* 場所ごとの詳細情報 */
 .info {
   background-color: blue;
-  height: 800px;
-  width: 800px;
+  height: 1000px;
+  width: 100%;
   position: relative;
 }
 
-.twitter {
+.calendar {
   background-color: red;
-  width: 50%;
-  height: 50%;
+  width: 600px;
+  height: 600px;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 300px;
 }
 
 .map {
   background-color: orange;
-  width: 50%;
-  height: 50%;
+  width: 600px;
+  height: 400px;
   position: absolute;
-  top: 50%;
-  left: 0;
+  top: 600px;
+  left: 300px;
 }
 
-.calender {
+.twitter {
   background-color: orchid;
-  width: 50%;
+  width: 600px;
   height: 100%;
   position: absolute;
-  left: 400px;
+  left: 900px;
 }
