@@ -12,16 +12,18 @@
       <h1 class="title">
         ざぶとんだより
       </h1>
-      <ul class='lists-right'>
-      <%# ログイン時の見た目設定 %>
-      <% if user_signed_in? %>
-        <li><%= link_to "#{current_user.nickname}さんはログイン中", user_path(current_user.id), class: "user-nickname"%></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%></li>
-      <% else %>
-        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-      <% end %>
-      </ul>
+      <div class='lists'>
+        <ul class='lists-right'>
+        <%# ログイン時の見た目設定 %>
+        <% if user_signed_in? %>
+          <li><%= link_to "#{current_user.nickname}さんはログイン中", user_path(current_user.id), class: "user-nickname"%></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%></li>
+        <% else %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
     <div class="main">
       <!-- データを表示する日付 -->
@@ -39,7 +41,7 @@
         </div>
         <!-- 2-出演者情報・縦書きにする -->
         <div id="tabbody">
-            <div id ="tabpage1" class="comedian">
+            <div id ="tabpage1" class="comedian-day">
               一.春風亭　昇吾<br>
               一.柳亭　　小痴楽<br>
               一.三笑亭　小夢<br>
@@ -64,7 +66,7 @@
         <div class="info">
           <!-- 3-左上にTwitter -->
           <div class="twitter">
-            <a class="twitter-timeline" data-lang="ja" data-width="400" data-height="400" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a class="twitter-timeline" data-lang="ja" data-width="600" data-height="1000px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
           </div>
           <!-- 4-左下にMAP -->
           <div class="map", id="map">
@@ -72,7 +74,7 @@
 
           </div>
           <!-- 5-右側にカレンダー -->
-          <div class="calender">
+          <div class="calendar">
             <%= month_calendar do |date| %>
               <%= date.day %>
             <% end %>
