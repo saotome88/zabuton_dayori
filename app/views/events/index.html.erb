@@ -41,26 +41,46 @@
         </div>
         <!-- 2-出演者情報・縦書きにする -->
         <div id="tabbody">
-            <div id ="tabpage1" class="comedian-day">
-              一.春風亭　昇吾<br>
-              一.柳亭　　小痴楽<br>
-              一.三笑亭　小夢<br>
-              一.滝川　　鯉橋<br>
-              一.ポ　ロ　ン<br>
-              一.桂　　　小文治<br>
-              一.ねづっち<br>
-              一.古今亭　寿輔<br>
-              　お　中　入　り<br>
-              一.桂　　　鷹治<br>
-              一.味千代<br>
-              一.笑福亭　福笑<br>
-              一.柳家　　蝉丸<br>
-              一.D51<br>
-              <b>一.桂　　　文治</b>
-            </div>
-            <div id="tabpage2" class="comedian">池袋</div>
-            <div id="tabpage3" class="comedian">浅草</div>
-            <div id="tabpage4" class="comedian">上野鈴本</div>
+          <div id ="tabpage1" class="comedian-day">
+            <b>昼席</b><br>
+            一.春風亭　昇吾<br>
+            一.柳亭　　小痴楽<br>
+            一.三笑亭　小夢<br>
+            一.滝川　　鯉橋<br>
+            一.ポ　ロ　ン<br>
+            一.桂　　　小文治<br>
+            一.ねづっち<br>
+            一.古今亭　寿輔<br>
+            　お　中　入　り<br>
+            一.桂　　　鷹治<br>
+            一.味千代<br>
+            一.笑福亭　福笑<br>
+            一.柳家　　蝉丸<br>
+            一.D51<br>
+            <b>一.桂　　　文治</b>
+          </div>
+          <div id ="tabpage1" class="comedian-night">
+            <b>夜席</b><br>
+            一.春風亭　昇吾<br>
+            一.柳亭　　小痴楽<br>
+            一.三笑亭　小夢<br>
+            一.滝川　　鯉橋<br>
+            一.ポ　ロ　ン<br>
+            一.桂　　　小文治<br>
+            一.ねづっち<br>
+            一.古今亭　寿輔<br>
+            　お　中　入　り<br>
+            一.桂　　　鷹治<br>
+            一.味千代<br>
+            一.笑福亭　福笑<br>
+            一.柳家　　蝉丸<br>
+            一.D51<br>
+            <b>一.桂　　　文治</b>
+          </div>
+
+          <div id="tabpage2" class="comedian-day">池袋</div>
+          <div id="tabpage3" class="comedian-day">浅草</div>
+          <div id="tabpage4" class="comedian-day">上野鈴本</div>
         </div>
         <!-- 詳細情報 -->
         <div class="info">
@@ -76,7 +96,7 @@
           <!-- 5-右側にカレンダー -->
           <div class="calendar">
             <%= month_calendar do |date| %>
-              <%= date.day %>
+            <%= date.day %>
             <% end %>
           </div>
         </div>

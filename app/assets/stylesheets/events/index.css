@@ -81,7 +81,7 @@ a {
 /* 昼席の出演者 */
 .comedian-day {
   background-color: greenyellow;
-  height: 400px;
+  height: 200px;
   width: 100%;
   /* 縦書き表記 */
   writing-mode: vertical-rl;
@@ -91,6 +91,16 @@ a {
 }
 
 /* 夜席の出演者 */
+.comedian-night {
+  background-color: green;
+  height: 200px;
+  width: 100%;
+  /* 縦書き表記 */
+  writing-mode: vertical-rl;
+  letter-spacing: 3pt;
+  line-height: 250%;
+  font-size: 18px;
+}
 
 /* 場所ごとの詳細情報 */
 .info {
