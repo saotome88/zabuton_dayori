@@ -106,32 +106,31 @@ a {
 .info {
   background-color: blue;
   height: 1000px;
-  width: 100%;
+  width: 1200px;
   position: relative;
+  margin: auto;
 }
 
 .calendar {
   background-color: red;
-  width: 600px;
   height: 600px;
+  width: 600px;
   position: absolute;
   top: 0;
-  left: 300px;
 }
 
 .map {
   background-color: orange;
-  width: 600px;
   height: 400px;
+  width: 600px;
   position: absolute;
   top: 600px;
-  left: 300px;
 }
 
 .twitter {
-  background-color: orchid;
-  width: 600px;
+  background-color: yellowgreen;
   height: 100%;
+  width: 600px;
   position: absolute;
-  left: 900px;
+  left: 600px;
 }
