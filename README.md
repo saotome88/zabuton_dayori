@@ -94,7 +94,7 @@ Things you may want to cover:
 |---------------|------------|--------------------------------|
 | user          | references | null: false, foreign_key: true |
 | event         | references | null: false, foreign_key: true |
-| memo          | string     | null: false                    |
+| memo          | text       | null: false                    |
 
 ### Association
 -belongs_to :user
