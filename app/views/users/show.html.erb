@@ -28,6 +28,7 @@
       </td>
       <td class="detail-memo">
         <%# メモのフォームを作成 %>
+        <%# いいね機能を作成後に@reaction_likesと@memoのform_withを作成する %>
         <%= form_for(@memo) do |f| %>
           <%= f.text_field :text %>
           <%= f.submit "メモを送信" %>
