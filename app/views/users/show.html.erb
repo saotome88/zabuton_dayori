@@ -7,8 +7,32 @@
   <tbody>
     <tr>
       <th class="detail-reaction">いいね！(仮)</th>
-      <td class="detail-value">番組表の表示</td>
-      <td class="detail-memo">メモを書く</td>
+      <td class="detail-value">
+            2021年6月10日<br>
+            <b>新宿末廣亭 昼席</b><br>
+            一.春風亭　昇吾<br>
+            一.柳亭　　小痴楽<br>
+            一.三笑亭　小夢<br>
+            一.滝川　　鯉橋<br>
+            一.ポ　ロ　ン<br>
+            一.桂　　　小文治<br>
+            一.ねづっち<br>
+            一.古今亭　寿輔<br>
+            　お　中　入　り<br>
+            一.桂　　　鷹治<br>
+            一.味千代<br>
+            一.笑福亭　福笑<br>
+            一.柳家　　蝉丸<br>
+            一.D51<br>
+            <b>一.桂　　　文治</b>
+      </td>
+      <td class="detail-memo">
+        <%# メモのフォームを作成 %>
+        <%= form_for(@memo) do |f| %>
+          <%= f.text_field :text %>
+          <%= f.submit "メモを送信" %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th class="detail-reaction">いいね！(仮)</th>

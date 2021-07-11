@@ -17,9 +17,14 @@
 
 .detail-value {
   width: 60%;
+  height: 200px;
   padding: 20px;
   border: 1px solid #dedede;
-  font-size: 14px;
+  /* 縦書き表記 */
+  writing-mode: vertical-rl;
+  letter-spacing: 3pt;
+  line-height: 200%;
+  font-size: 18px;
 }
 
 .detail-memo {
