@@ -9,5 +9,5 @@ class User < ApplicationRecord
   validates :encrypted_password, :password, :password_confirmation, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]/ }
 
   has_many :memos
-  has_many :reaction_likes
+  has_many :reaction_likes, dependent: :destroy
 end
