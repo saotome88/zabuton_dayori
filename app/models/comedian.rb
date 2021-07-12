@@ -1,4 +1,12 @@
 class Comedian < ActiveHash::Base
+  include ActiveHash::Associations
+  has_many :event_comedians
+
+  # mapメソッドにより各レコードごとのeventを配列に格納している
+  def events
+    event_comedians.map(&:event)
+  end
+
   self.data = [
     { id: 1, name: '' },
     { id: 2, name '春風亭　あああ' },
