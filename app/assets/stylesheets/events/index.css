@@ -90,6 +90,12 @@ a {
   font-size: 18px;
 }
 
+#like {
+  font-size: 20px;
+  background-color: black;
+  color: white;
+}
+
 /* 夜席の出演者 */
 .comedian-night {
   background-color: green;
