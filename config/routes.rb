@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :events, only: [:index]
   resources :users, only: [:show]
   resources :memos, only: [:create]
+  resources :reaction_likes, only: [:create, :destroy]
 end
