@@ -6,6 +6,6 @@ class EventsController < ApplicationController
   private
 
   def event_parameter
-    params.permit(:event).permit(:theatername, :startday, :daynight, :comeddian_id)
+    params.permit(:event).permit(:theatername, :startday, :daynight, :comedian_id)
   end
 end

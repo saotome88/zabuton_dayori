@@ -8,6 +8,6 @@ class User < ApplicationRecord
   # passwordは半角英数字のバリデーション
   validates :encrypted_password, :password, :password_confirmation, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]/ }
 
-  has_many :memos
   has_many :reaction_likes, dependent: :destroy
+  has_many :events, through: :reaction_likes
 end

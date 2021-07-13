@@ -1,6 +1,7 @@
 class Comedian < ActiveHash::Base
   include ActiveHash::Associations
   has_many :event_comedians
+  has_many :events, through: :event_comedians
 
   # mapメソッドにより各レコードごとのeventを配列に格納している
   def events
