@@ -21,7 +21,6 @@
   font-weight: bold;
 }
 
-
 .logout {
   text-decoration: none;
   color: #333333;
@@ -39,37 +38,32 @@
   color: #333333;
 }
 
-.main {
-  background-color: black;
-  margin: auto;
-  width: 100%;
-  height: 450px;
-}
-
 /* 日付 */
 .schedule {
   background-color: yellow;
   margin: auto;
   text-align: center;
-  height: 25px;
+  font-size: 30px;
+  height: 40px;
 }
 
 /* ステージの場所・昼夜・出演者情報 */
 .stage-info {
   background-color: pink;
-  height: 225px;
+  height: 430px;
 }
 
 #tabcontrol {
-  background-color: white;
+  background-color: skyblue;
   text-align: right;
-  padding-right: 10px;
-  height: 25px;
+  padding-right: 15px;
+  height: 30px;
 }
 
 a {
   text-decoration: none;
   color: gray;
+  font-size: 24px;
 }
 
 /* タブにマウスポインタが載ったとき */
@@ -78,34 +72,44 @@ a {
 }
 
 /* タブの中身・出演者一覧 */
-/* 昼席の出演者 */
-.comedian-day {
-  background-color: greenyellow;
-  height: 200px;
+.comedian {
+  height: 400px;
   width: 100%;
-  /* 縦書き表記 */
-  writing-mode: vertical-rl;
-  letter-spacing: 3pt;
-  line-height: 250%;
-  font-size: 18px;
+  /* 昼夜の番組表を縦に並べる */
+  display: flex;
+  flex-direction: column;
 }
 
-#like {
-  font-size: 20px;
-  background-color: black;
-  color: white;
+/* 昼席の出演者 */
+.comedian-day {
+  background-color: gray;
+  height: 200px;
+  /* 縦書き表記 */
+  writing-mode: vertical-rl;
+  align-items: center;
+  letter-spacing: 3px;
+  line-height: 250%;
+  font-size: 18px;
 }
 
 /* 夜席の出演者 */
 .comedian-night {
-  background-color: green;
+  background-color: gainsboro;
   height: 200px;
-  width: 100%;
   /* 縦書き表記 */
   writing-mode: vertical-rl;
+  align-items: center;
   letter-spacing: 3pt;
   line-height: 250%;
   font-size: 18px;
+}
+
+/*いいねボタン  */
+.like {
+  font-size: 20px;
+  background-color: white;
+  color: black;
+  margin-top: 150px;
 }
 
 /* 場所ごとの詳細情報 */
@@ -118,7 +122,7 @@ a {
 }
 
 .calendar {
-  background-color: red;
+  background-color: rgba(165, 37, 37, 0.904);
   height: 600px;
   width: 600px;
   position: absolute;
