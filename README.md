@@ -43,9 +43,6 @@ Things you may want to cover:
 | theatername        | string     | null: false                    |
 | startday           | date       | null: false                    |
 | daynight           | string     | null: false                    |
-| event_comedian_id  | integer    | null: false                    |
-*event_comedianはActivehashで管理するため、integer型にする。
-※comedianクラスに名前の保存。event_comesianクラスは中間テーブルとなる。
 
 ### Association
 -has_many :reaction_likes
@@ -56,6 +53,19 @@ Things you may want to cover:
 #### 追加実装用
 -has_many :reaction_hopes
 -has_many :reaction_pasts
+
+
+## EventComediansテーブル
+| Colum         | Type       | Options                        |
+|---------------|------------|--------------------------------|
+| event         | references | null: false, foreign_key: true |
+| comedian_id   | intger     | null: false                    |
+*event_comedianはActivehashで管理するため、integer型にする。
+※comedianクラスに名前の保存。event_comesianクラスは中間テーブルとなる。
+
+### Association
+-belongs_to :event
+-belongs_to :comedian_id
 
 
 ## Reaction_likesテーブル
