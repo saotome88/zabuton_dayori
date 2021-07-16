@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_13_142417) do
+ActiveRecord::Schema.define(version: 2021_07_16_141634) do
+
+  create_table "event_comedians", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "event_id", null: false
+    t.integer "comedian_id", null: false
+    t.index ["event_id"], name: "index_event_comedians_on_event_id"
+  end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -18,7 +26,6 @@ ActiveRecord::Schema.define(version: 2021_07_13_142417) do
     t.string "theatername", default: "", null: false
     t.date "startday", null: false
     t.string "daynaight", default: "", null: false
-    t.integer "event_comedian_id", null: false
   end
 
   create_table "memos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -52,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_07_13_142417) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "event_comedians", "events"
   add_foreign_key "memos", "reaction_likes"
   add_foreign_key "reaction_likes", "events"
   add_foreign_key "reaction_likes", "users"
