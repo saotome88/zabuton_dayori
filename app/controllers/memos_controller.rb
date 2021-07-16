@@ -1,12 +1,21 @@
 class MemosController < ApplicationController
+
+  def new
+    @memo = Memo.new
+  end
+
   def create
     @memo = Memo.new(memo_params)
+    if @memo.valid?
+      @memo.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   private
-
   def memo_params
-    # reaction_likesのmerge方法は後で追加記述
-    params.require(:memo).permit(:text).merge(user_id: current_user.id)
+    params.require(:memo).permit(:text).merge(reaction_like_id: params[:reaction_like_id])
   end
 end
