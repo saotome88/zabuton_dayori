@@ -5,7 +5,6 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.string  :theatername,              null: false, default: ""
       t.date    :startday,                 null: false
       t.string  :daynaight,                null: false, default: ""
-      t.integer :event_comedian_id,        null: false
     end
   end
 end
