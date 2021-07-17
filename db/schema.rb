@@ -10,32 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_12_030807) do
+ActiveRecord::Schema.define(version: 2021_07_16_141634) do
+
+  create_table "event_comedians", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "event_id", null: false
+    t.integer "comedian_id", null: false
+    t.index ["event_id"], name: "index_event_comedians_on_event_id"
+  end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "theatername", default: "", null: false
+    t.integer "theater_id", null: false
     t.date "startday", null: false
-    t.string "daynaight", default: "", null: false
-    t.integer "comedian_id", null: false
+    t.integer "daynight_id", null: false
   end
 
   create_table "memos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.bigint "event_id"
     t.text "text", null: false
-    t.index ["event_id"], name: "index_memos_on_event_id"
-    t.index ["user_id"], name: "index_memos_on_user_id"
+    t.bigint "reaction_like_id", null: false
+    t.index ["reaction_like_id"], name: "index_memos_on_reaction_like_id"
   end
 
   create_table "reaction_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
     t.index ["event_id"], name: "index_reaction_likes_on_event_id"
     t.index ["user_id"], name: "index_reaction_likes_on_user_id"
   end
@@ -44,6 +49,7 @@ ActiveRecord::Schema.define(version: 2021_07_12_030807) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", default: "", null: false
+    t.boolean "admin", default: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -53,8 +59,8 @@ ActiveRecord::Schema.define(version: 2021_07_12_030807) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "memos", "events"
-  add_foreign_key "memos", "users"
+  add_foreign_key "event_comedians", "events"
+  add_foreign_key "memos", "reaction_likes"
   add_foreign_key "reaction_likes", "events"
   add_foreign_key "reaction_likes", "users"
 end

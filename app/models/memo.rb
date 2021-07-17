@@ -1,4 +1,3 @@
 class Memo < ApplicationRecord
-  belongs_to :user
-  belongs_to :event
+  belongs_to :reaction_like
 end

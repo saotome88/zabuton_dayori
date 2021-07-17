@@ -8,7 +8,7 @@
 
   <body>
     <!-- タイトル -->
-    <div class='header'>
+    <div class="header">
       <h1 class="title">
         ざぶとんだより
       </h1>
@@ -25,104 +25,120 @@
         </ul>
       </div>
     </div>
-    <div class="main">
-      <!-- データを表示する日付 -->
-      <div class="schedule">
-        6月14日の出演情報(※選択した日付が反映)
+
+    <!-- データを表示する日付 -->
+    <div class="schedule">
+      6月14日の出演情報(※選択した日付が反映)
+    </div>
+    <!-- 寄席の詳細情報 -->
+    <div class=stage-info>
+      <!-- 演芸場をタブで表記する -->
+      <div id="tabcontrol" class="theater" >
+        <a href="#tabpage1">新宿末廣亭 /</a>
+        <a href="#tabpage2">池袋演芸場 /</a>
+        <a href="#tabpage3">浅草演芸ホール /</a>
+        <a href="#tabpage4">上野鈴本</a>
       </div>
-      <!-- 寄席の詳細情報 -->
-      <div class=stage-info>
-        <!-- 演芸場をタブで表記する -->
-        <div class="theater" id="tabcontrol">
-          <a href="#tabpage1">新宿末廣亭</a>
-          <a href="#tabpage2">池袋演芸場</a>
-          <a href="#tabpage3">浅草演芸ホール</a>
-          <a href="#tabpage4">上野鈴本</a>
-        </div>
-        <!-- 2-出演者情報・縦書きにする -->
-        <div id="tabbody">
-          <div id ="tabpage1" class="comedian-day">
-            <b>新宿末廣亭 昼席</b><br>
-            一.春風亭　昇吾<br>
-            一.柳亭　　小痴楽<br>
-            一.三笑亭　小夢<br>
-            一.滝川　　鯉橋<br>
-            一.ポ　ロ　ン<br>
-            一.桂　　　小文治<br>
-            一.ねづっち<br>
-            一.古今亭　寿輔<br>
-            　お　中　入　り<br>
-            一.桂　　　鷹治<br>
-            一.味千代<br>
-            一.笑福亭　福笑<br>
-            一.柳家　　蝉丸<br>
-            一.D51<br>
-            <b>一.桂　　　文治</b><br>
-            <input type="button" value="いいね！">
-          </div>
-          <div id ="tabpage1" class="comedian-night">
-            <b>新宿末廣亭 夜席</b><br>
-            一.春風亭　昇吾<br>
-            一.柳亭　　小痴楽<br>
-            一.三笑亭　小夢<br>
-            一.滝川　　鯉橋<br>
-            一.ポ　ロ　ン<br>
-            一.桂　　　小文治<br>
-            一.ねづっち<br>
-            一.古今亭　寿輔<br>
-            　お　中　入　り<br>
-            一.桂　　　鷹治<br>
-            一.味千代<br>
-            一.笑福亭　福笑<br>
-            一.柳家　　蝉丸<br>
-            一.D51<br>
-            <b>一.桂　　　文治</b>
-          </div>
+      <!-- 2-出演者情報・縦書きにする -->
+      <div id="tabbody" class="comedian">
+        <div id ="tabpage1" class="comedian-day">
+          <p><b>　新宿末廣亭 昼席</b></p>
+          <%# Activehashからの出演者の呼び出し %>
+          <p><%= @event.theater.name %></p>
+          <p><%= @event.startday %></p>
+          <p><%= @event.daynight.name %></p>
+          <p><%= @event_comedian.comedian.name %></p>
 
-          <div id="tabpage2" class="comedian-day">
-            池袋 昼席<br>
-            あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-          </div>
-          <div id="tabpage2" class="comedian-night">
-            池袋 昼席<br>
-            あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-          </div>
-          <div id="tabpage3" class="comedian-day">
-            浅草 昼席<br>
-            あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-          </div>
-          <div id="tabpage3" class="comedian-night">
-            浅草 夜席<br>
-            あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-          </div>
-          <div id="tabpage4" class="comedian-day">
-            上野鈴本 昼席<br>
-            あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-          </div>
-          <div id="tabpage4" class="comedian-night">
-            上野鈴本 夜席<br>
-            あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
-          </div>
+          <p>一.春風亭　昇吾</p>
+          <p>一.柳亭　　小痴楽</p>
+          <p>一.三笑亭　小夢</p>
+          <p>一.滝川　　鯉橋</p>
+          <p>一.ポ　ロ　ン</p>
+          <p>一.桂　　　小文治</p>
+         <p> 一.ねづっち</p>
+          <p>一.古今亭　寿輔</p>
+          <p>　お　中　入　り</p>
+          <p>一.桂　　　鷹治</p>
+          <p>一.味千代</p>
+          <p>一.笑福亭　福笑</p>
+          <p>一.柳家　　蝉丸</p>
+          <p>一.D51</p>
+          <p><b>一.桂　　　文治</b></p>
+          <input type="button" value="いいね！" class="like">
         </div>
-        <!-- 詳細情報 -->
-        <div class="info">
-          <!-- 3-左上にTwitter -->
-          <div class="twitter">
-            <a class="twitter-timeline" data-lang="ja" data-width="600px" data-height="1000px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
-          <!-- 4-左下にMAP -->
-          <div class="map", id="map">
-          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>"></script>
+        <div id ="tabpage1" class="comedian-night">
+          <p><b>　新宿末廣亭 昼席</b></p>
+          <p>一.春風亭　昇吾</p>
+          <p>一.柳亭　　小痴楽</p>
+          <p>一.三笑亭　小夢</p>
+          <p>一.滝川　　鯉橋</p>
+          <p>一.ポ　ロ　ン</p>
+          <p>一.桂　　　小文治</p>
+         <p> 一.ねづっち</p>
+          <p>一.古今亭　寿輔</p>
+          <p>　お　中　入　り</p>
+          <p>一.桂　　　鷹治</p>
+          <p>一.味千代</p>
+          <p>一.笑福亭　福笑</p>
+          <p>一.柳家　　蝉丸</p>
+          <p>一.D51</p>
+          <p><b>一.桂　　　文治</b></p>
+          <input type="button" value="いいね！" class="like">
+        </div>
 
-          </div>
-          <!-- 5-右側にカレンダー -->
-          <div class="calendar">
-            <%= month_calendar do |date| %>
-            <%= date.day %>
-            <% end %>
-          </div>
+        <div id="tabpage2" class="comedian-day">
+          池袋演芸場 昼席<br>
+          あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          <input type="button" value="いいね！" class="like">
+        </div>
+        <div id="tabpage2" class="comedian-night">
+          池袋演芸場 昼席<br>
+          あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          <input type="button" value="いいね！" class="like">
+        </div>
+
+        <div id="tabpage3" class="comedian-day">
+          浅草演芸ホール 昼席<br>
+          あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          <input type="button" value="いいね！" class="like">
+        </div>
+        <div id="tabpage3" class="comedian-night">
+          浅草演芸ホール 夜席<br>
+          あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          <input type="button" value="いいね！" class="like">
+        </div>
+
+        <div id="tabpage4" class="comedian-day">
+          上野鈴本 昼席<br>
+          あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          <input type="button" value="いいね！" class="like">
+        </div>
+        <div id="tabpage4" class="comedian-night">
+          上野鈴本 夜席<br>
+          あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          <input type="button" value="いいね！" class="like">
         </div>
       </div>
+
+
+      <!-- 詳細情報 -->
+      <div class="info">
+        <!-- 3-左上にTwitter -->
+        <div class="twitter">
+          <a class="twitter-timeline" data-lang="ja" data-width="600px" data-height="1000px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <!-- 4-左下にMAP -->
+        <div class="map", id="map">
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>"></script>
+        </div>
+        <!-- 5-右側にカレンダー -->
+        <div class="calendar">
+          <%= month_calendar do |date| %>
+          <%= date.day %>
+          <% end %>
+        </div> 
+      </div>
+
     </div>
   </body>
 </html>
