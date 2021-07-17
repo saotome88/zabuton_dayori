@@ -11,5 +11,5 @@ class Comedian < ActiveHash::Base
     { id: 4, name: '桂　えええ' },
     { id: 5, name: '三遊亭　おおお' },
     { id: 6, name: '神田　かかか' }
-]
+  ]
 end
