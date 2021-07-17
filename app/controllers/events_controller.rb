@@ -1,8 +1,9 @@
 class EventsController < ApplicationController
   def index
     @events = Event.all
-    @event = Event.find(1)
-    @event_comedian = EventComedian.find(1)
+    #本番環境の表示のためコメントアウト
+    #@event = Event.find(1)
+    #@event_comedian = EventComedian.find(1)
   end
 
   private
