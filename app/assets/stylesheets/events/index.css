@@ -12,6 +12,7 @@
 .lists-right {
   list-style: none;
   display: flex;
+  font-size: 20px;
 }
 
 .user-nickname {
