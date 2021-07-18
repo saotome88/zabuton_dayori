@@ -1,0 +1,46 @@
+  <div class="event_post">
+    <h2 class="post-title">番組表の作成</h2>
+    <%= form_with model: @event, url: admin_events_path, local: true do |f| %>
+
+    <%# エラーメッセージの表示%> 
+    <%# f.objectで部分テンプレートに@eventを渡す %>
+
+    <%# 番組表の概要 %>
+    <div class="events-detail">
+      <div class="form">
+        <div class="weight-bold-text">
+          演芸場の選択
+        </div>
+        <%= f.collection_select(:theater_id, Theater.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <div class="weight-bold-text">
+          日付の入力
+        </div>
+          <%# 日付の保存！！ %>
+          入力フォーム作成中
+      </div>
+        <div class="weight-bold-text">
+          昼席・夜席の選択
+        </div>
+        <%= f.collection_select(:daynight_id, Daynight.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+    </div>
+    <%# /番組表の概要 %>
+
+    <%# 出演者について %>
+    <div class="items-detail">
+      <div class="form">
+        <div class="weight-bold-text">
+          <span>出演者の選択</span>
+          <span>１人目</span>
+        </div>
+        <%= f.collection_select(:comedian_id, Comedian.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+      </div>
+    </div>
+
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "登録する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
