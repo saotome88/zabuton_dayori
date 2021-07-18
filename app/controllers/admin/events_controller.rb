@@ -28,6 +28,6 @@ class Admin::EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(::theater_id, :startday, :daynight_id).merge(user_id: current_user.id)
+    params.require(:event).permit(:theater_id, :startday, :daynight_id)
   end
 end
