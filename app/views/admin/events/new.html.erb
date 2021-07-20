@@ -15,8 +15,8 @@
         <div class="weight-bold-text">
           日付の入力
         </div>
-          <%# 日付の保存！！ %>
-          入力フォーム作成中
+          <%# 日付の保存%>
+        <%= f.date_select(:startday) %>
       </div>
         <div class="weight-bold-text">
           昼席・夜席の選択
@@ -38,7 +38,7 @@
 
     <%# 下部ボタン %>
     <div class="sell-btn-contents">
-      <%= f.submit "登録する" ,class:"sell-btn" %>
+      <%= f.submit "登録する", class:"sell-btn" %>
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
