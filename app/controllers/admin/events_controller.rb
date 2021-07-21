@@ -4,11 +4,11 @@ class Admin::EventsController < ApplicationController
 
   #管理者だけにさせたいアクションはここに記述する！
   def new
-    @event = Event.new
+    @event = EventComedianForm.new
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = EventComedianForm.new(event_params)
     if @event.valid?
       @event.save
       redirect_to root_path
@@ -17,10 +17,10 @@ class Admin::EventsController < ApplicationController
     end
   end
 
-  def destroy
-    event = Event.find(params[:id])
-    event.destroy
-  end
+#  def destroy
+#    event = EventComedianForm.find(params[:id])
+#    event.destroy
+#  end
 
   private
   def if_not_admin
@@ -28,6 +28,6 @@ class Admin::EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:theater_id, :startday, :daynight_id)
+    params.require(:event_comedian_form).permit(:theater_id, :startday, :daynight_id, :comedian_id)
   end
 end
