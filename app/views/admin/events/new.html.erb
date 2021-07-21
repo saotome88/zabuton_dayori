@@ -29,11 +29,12 @@
     <div class="items-detail">
       <div class="form">
         <div class="weight-bold-text">
-          <span>出演者の選択</span>
+          <span>出演者の選択</span><br>
           <span>１人目</span>
         </div>
+        <%# 芸人名を特定する:comedian_idカラムは、中間テーブルのEvent_Comediansに保存をする %>
         <%= f.collection_select(:comedian_id, Comedian.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
-      </div>
+        <div class="weight-bold-text">
     </div>
 
     <%# 下部ボタン %>
