@@ -32,9 +32,10 @@
       </div>
     </div>
 
-    <!-- データを表示する日付 -->
+    <!-- データを表示する日付を表示する -->
     <div class="schedule">
-      6月14日の出演情報(※選択した日付が反映)
+      <!-- 仮で当日の日付表示中 -->
+      <%= Date.today %>
     </div>
     <!-- 寄席の詳細情報 -->
     <div class=stage-info>
@@ -139,8 +140,11 @@
         </div>
         <!-- 5-右側にカレンダー -->
         <div class="calendar">
-          <%= month_calendar do |date| %>
-          <%= date.day %>
+          <%= month_calendar do |date, events| %>
+              <%= date.day %>
+            <% events.each do |e| %>
+              <%= "#{e.startday}の番組表" %>
+            <% end %>
           <% end %>
         </div> 
       </div>
