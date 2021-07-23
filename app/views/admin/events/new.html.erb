@@ -1,6 +1,6 @@
-  <div class="event_post">
-    <h2 class="post-title">番組表の作成</h2>
-    <%= form_with model: @event, url: admin_events_path, local: true do |f| %>
+<div class="event_post">
+  <h2 class="post-title">番組表の作成</h2>
+  <%= form_with model: @event, url: admin_events_path, local: true do |f| %>
 
     <%# エラーメッセージの表示%> 
     <%# f.objectで部分テンプレートに@eventを渡す %>
@@ -30,11 +30,17 @@
       <div class="form">
         <div class="weight-bold-text">
           <span>出演者の選択</span><br>
-          <span>１人目</span>
+          <span>1人目</span>
         </div>
         <%# 芸人名を特定する:comedian_idカラムは、中間テーブルのEvent_Comediansに保存をする %>
-        <%= f.collection_select(:comedian_id, Comedian.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <%= f.collection_select(:comedian_ids, Comedian.all, :id, :name, {}, {name: 'event_comedian_form[comedian_ids][]', class:"select-box", id:"item-category"}) %>
+
+        <%# 以下、二人目の実装 %>
         <div class="weight-bold-text">
+          <span>2人目</span>
+        </div>
+        <%# 芸人名を特定する:comedian_idカラムは、中間テーブルのEvent_Comediansに保存をする %>
+        <%= f.collection_select(:comedian_ids, Comedian.all, :id, :name, {}, {name: 'event_comedian_form[comedian_ids][]', class:"select-box", id:"item-category"}) %>
     </div>
 
     <%# 下部ボタン %>
@@ -43,5 +49,5 @@
       <%=link_to 'もどる', root_path, class:"back-btn" %>
     </div>
     <%# /下部ボタン %>
-  </div>
   <% end %>
+</div>
