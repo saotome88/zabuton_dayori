@@ -10,7 +10,6 @@ class Admin::EventsController < ApplicationController
   def create
     @event = EventComedianForm.new(event_params)
     comedians = params[:event_comedian_form][:comedian_ids]
-    binding.pry
     if @event.valid?
       @event.save(comedians)
       redirect_to root_path
@@ -30,6 +29,6 @@ class Admin::EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event_comedian_form).permit(:theater_id, :startday, :daynight_id, comedian_ids: [])
+    params.require(:event_comedian_form).permit(:theater_id, :start_time, :daynight_id, comedian_ids: [])
   end
 end
