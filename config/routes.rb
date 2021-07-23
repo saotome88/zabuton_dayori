@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :memos, only: [:create]
   resources :reaction_likes, only: [:create, :destroy]
+
+  namespace :admin do
+    resources :events, only: [:new, :create, :destroy, :update, :edit]
+  end
 end
