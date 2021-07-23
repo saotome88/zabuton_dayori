@@ -117,15 +117,15 @@ a {
 .info {
   background-color: blue;
   height: 1000px;
-  width: 1200px;
+  width: 1300px;
   position: relative;
   margin: auto;
 }
 
 .calendar {
-  background-color: rgba(165, 37, 37, 0.904);
+  background-color: whitesmoke;
   height: 600px;
-  width: 600px;
+  width: 700px;
   position: absolute;
   top: 0;
 }
@@ -133,7 +133,7 @@ a {
 .map {
   background-color: orange;
   height: 400px;
-  width: 600px;
+  width: 700px;
   position: absolute;
   top: 600px;
 }
@@ -143,5 +143,5 @@ a {
   height: 100%;
   width: 600px;
   position: absolute;
-  left: 600px;
+  left: 700px;
 }

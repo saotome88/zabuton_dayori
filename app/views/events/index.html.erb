@@ -140,10 +140,21 @@
         </div>
         <!-- 5-右側にカレンダー -->
         <div class="calendar">
-          <%= month_calendar do |date, events| %>
-              <%= date.day %>
-            <% events.each do |e| %>
-              <%= "#{e.startday}の番組表" %>
+          <%= month_calendar events: @events do |date, events| %>
+            <%= date.day %><br>
+            <% events.each do |event| %>
+              <% dd = event.start_time.day %>
+              <% if event.theater_id == 1 %>
+                <% if dd > 0 && dd < 11 %>
+                  <%= "上席の番組" %>
+                <% elsif dd > 10 && dd < 21 %>
+                  <%= "中席の番組" %>
+                <% elsif dd > 20 && dd < 30 %>
+                  <%= "下席の番組" %>
+                <% else %>
+                  <%= "余市の会" %>
+                <% end %>
+              <% end %>
             <% end %>
           <% end %>
         </div> 
