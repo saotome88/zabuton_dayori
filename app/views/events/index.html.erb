@@ -49,23 +49,33 @@
       <!-- 2-出演者情報・縦書きにする -->
       <div id="tabbody" class="comedian">
         <div id ="tabpage1" class="comedian-day">
-          ※仮表示＝新宿末廣亭<br>
+          ※直打ち込み文字<br>
           <% @events.each do |event| %>
             <% if (event.start_time == Date.today) && (event.theater_id == 1) && (event.daynight_id == 1) %>
-              <p><%= event.theater.name %></p>
               <p><%= event.start_time %></p>
-              <p><%= event.daynight.name %></p>
+              <p><%= event.theater.name %></p>
+              <p><%= event.daynight.name %>席</p>
               <%# エラー中・要修正 %>
-              <% event.event_comedians.each do |comedian| %>
-                <%= comedian %>
+              <% event.event_comedians.each do |event_comedian| %>
+                <p>一．<%= event_comedian.comedian.name %></p>
               <% end %>
             <% end %>
           <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
         <div id ="tabpage1" class="comedian-night">
-        新宿末廣亭 夜席<br>
-        削除中
+          ※直打ち込み文字<br>
+          <% @events.each do |event| %>
+            <% if (event.start_time == Date.today) && (event.theater_id == 1) && (event.daynight_id == 2) %>
+              <p><%= event.start_time %></p>
+              <p><%= event.theater.name %></p>
+              <p><%= event.daynight.name %>席</p>
+              <%# エラー中・要修正 %>
+              <% event.event_comedians.each do |event_comedian| %>
+                <p>一．<%= event_comedian.comedian.name %></p>
+              <% end %>
+            <% end %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
 
