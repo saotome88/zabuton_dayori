@@ -49,80 +49,56 @@
       <!-- 2-出演者情報・縦書きにする -->
       <div id="tabbody" class="comedian">
         <div id ="tabpage1" class="comedian-day">
-          <p><b>　新宿末廣亭 昼席</b></p>
-          <%# Activehashからの出演者の呼び出し %>
-          <%#<p><%= @event.theater.name ></p>%>
-          <%#p><%= @event.startday ></p>%>
-          <%#p><%= @event.daynight.name ></p>%>
-          <%#p><%= @event_comedian.comedian.name ></p>%>
-
-          <p>一.春風亭　昇吾</p>
-          <p>一.柳亭　　小痴楽</p>
-          <p>一.三笑亭　小夢</p>
-          <p>一.滝川　　鯉橋</p>
-          <p>一.ポ　ロ　ン</p>
-          <p>一.桂　　　小文治</p>
-         <p> 一.ねづっち</p>
-          <p>一.古今亭　寿輔</p>
-          <p>　お　中　入　り</p>
-          <p>一.桂　　　鷹治</p>
-          <p>一.味千代</p>
-          <p>一.笑福亭　福笑</p>
-          <p>一.柳家　　蝉丸</p>
-          <p>一.D51</p>
-          <p><b>一.桂　　　文治</b></p>
+          ※仮表示＝新宿末廣亭<br>
+          <% @events.each do |event| %>
+            <% if (event.start_time == Date.today) && (event.theater_id == 1) && (event.daynight_id == 1) %>
+              <p><%= event.theater.name %></p>
+              <p><%= event.start_time %></p>
+              <p><%= event.daynight.name %></p>
+              <%# エラー中・要修正 %>
+              <% event.event_comedians.each do |comedian| %>
+                <%= comedian %>
+              <% end %>
+            <% end %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
         <div id ="tabpage1" class="comedian-night">
-          <p><b>　新宿末廣亭 昼席</b></p>
-          <p>一.春風亭　昇吾</p>
-          <p>一.柳亭　　小痴楽</p>
-          <p>一.三笑亭　小夢</p>
-          <p>一.滝川　　鯉橋</p>
-          <p>一.ポ　ロ　ン</p>
-          <p>一.桂　　　小文治</p>
-         <p> 一.ねづっち</p>
-          <p>一.古今亭　寿輔</p>
-          <p>　お　中　入　り</p>
-          <p>一.桂　　　鷹治</p>
-          <p>一.味千代</p>
-          <p>一.笑福亭　福笑</p>
-          <p>一.柳家　　蝉丸</p>
-          <p>一.D51</p>
-          <p><b>一.桂　　　文治</b></p>
+        新宿末廣亭 夜席<br>
+        削除中
           <input type="button" value="いいね！" class="like">
         </div>
 
         <div id="tabpage2" class="comedian-day">
           池袋演芸場 昼席<br>
-          あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          ああああああああ
           <input type="button" value="いいね！" class="like">
         </div>
         <div id="tabpage2" class="comedian-night">
           池袋演芸場 昼席<br>
-          あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          ああああああああ
           <input type="button" value="いいね！" class="like">
         </div>
 
         <div id="tabpage3" class="comedian-day">
           浅草演芸ホール 昼席<br>
-          あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          ああああああああ
           <input type="button" value="いいね！" class="like">
         </div>
         <div id="tabpage3" class="comedian-night">
           浅草演芸ホール 夜席<br>
-          あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          ああああああああ
           <input type="button" value="いいね！" class="like">
         </div>
 
         <div id="tabpage4" class="comedian-day">
           上野鈴本 昼席<br>
-          あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          ああああああああ
           <input type="button" value="いいね！" class="like">
         </div>
         <div id="tabpage4" class="comedian-night">
           上野鈴本 夜席<br>
-          あああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ
+          ああああああああ
           <input type="button" value="いいね！" class="like">
         </div>
       </div>
@@ -146,13 +122,13 @@
               <% dd = event.start_time.day %>
               <% if event.theater_id == 1 %>
                 <% if dd > 0 && dd < 11 %>
-                  <%= "上席の番組" %>
+                  <p id="event"><%= "上席" %></p>
                 <% elsif dd > 10 && dd < 21 %>
-                  <%= "中席の番組" %>
-                <% elsif dd > 20 && dd < 30 %>
-                  <%= "下席の番組" %>
+                  <p><%= "中席" %></p>
+                <% elsif dd > 20 && dd < 31 %>
+                  <p><%= "下席" %></p>
                 <% else %>
-                  <%= "余市の会" %>
+                  <p><%= "余市の会" %></p>
                 <% end %>
               <% end %>
             <% end %>
