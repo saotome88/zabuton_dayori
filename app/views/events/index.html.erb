@@ -35,7 +35,7 @@
     <!-- データを表示する日付を表示する -->
     <div class="schedule">
       <!-- 仮で当日の日付表示中 -->
-      <%= Date.today %>
+      <%= Date.today %>:本日の番組
     </div>
     <!-- 寄席の詳細情報 -->
     <div class=stage-info>
@@ -55,9 +55,11 @@
               <p><%= event.start_time %></p>
               <p><%= event.theater.name %></p>
               <p><%= event.daynight.name %>席</p>
-              <%# エラー中・要修正 %>
+              <%# 出演者の名前 %>
               <% event.event_comedians.each do |event_comedian| %>
-                <p>一．<%= event_comedian.comedian.name %></p>
+                <% if event_comedian.comedian_id != 0 %>
+                  <p>一．<%= event_comedian.comedian.name %></p>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
@@ -72,7 +74,9 @@
               <p><%= event.daynight.name %>席</p>
               <%# エラー中・要修正 %>
               <% event.event_comedians.each do |event_comedian| %>
-                <p>一．<%= event_comedian.comedian.name %></p>
+                <% if event_comedian.comedian_id != 0 %>
+                  <p>一．<%= event_comedian.comedian.name %></p>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
@@ -118,7 +122,7 @@
       <div class="info">
         <!-- 3-左上にTwitter -->
         <div class="twitter">
-          <a class="twitter-timeline" data-lang="ja" data-width="600px" data-height="1000px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a class="twitter-timeline" data-lang="ja" data-width="600px" data-height="1150px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
         <!-- 4-左下にMAP -->
         <div class="map", id="map">
@@ -129,16 +133,22 @@
           <%= month_calendar events: @events do |date, events| %>
             <%= date.day %><br>
             <% events.each do |event| %>
+              <% if event.daynight_id == 1 %>
+                <% daynight = "昼" %>
+              <% else %>
+                <% daynight = "夜" %>
+              <% end %>
+
               <% dd = event.start_time.day %>
               <% if event.theater_id == 1 %>
                 <% if dd > 0 && dd < 11 %>
-                  <p id="event"><%= "上席" %></p>
+                    <p id="event"><%= link_to "上席:#{daynight}", event_path(event.id) %></p>
                 <% elsif dd > 10 && dd < 21 %>
-                  <p><%= "中席" %></p>
+                    <p id="event"><%= link_to "中席:#{daynight}", event_path(event.id) %></p>
                 <% elsif dd > 20 && dd < 31 %>
-                  <p><%= "下席" %></p>
+                    <p id="event"><%= link_to "下席:#{daynight}", event_path(event.id) %></p>
                 <% else %>
-                  <p><%= "余市の会" %></p>
+                  <p id="event"><%= link_to "余一会:#{daynight}", event_path(event.id) %></p>
                 <% end %>
               <% end %>
             <% end %>

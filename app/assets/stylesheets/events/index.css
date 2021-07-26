@@ -116,26 +116,26 @@ a {
 /* 場所ごとの詳細情報 */
 .info {
   background-color: blue;
-  height: 1000px;
-  width: 1300px;
+  height: 1150px;
+  width: 1450px;
   position: relative;
   margin: auto;
 }
 
 .calendar {
   background-color: whitesmoke;
-  height: 600px;
-  width: 700px;
+  height: 710px;
+  width: 850px;
   position: absolute;
   top: 0;
 }
 
 .map {
   background-color: orange;
-  height: 400px;
-  width: 700px;
+  height: 450px;
+  width: 850px;
   position: absolute;
-  top: 600px;
+  top: 710px;
 }
 
 .twitter {
@@ -143,5 +143,5 @@ a {
   height: 100%;
   width: 600px;
   position: absolute;
-  left: 700px;
+  left: 850px;
 }
