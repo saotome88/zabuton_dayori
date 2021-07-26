@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <!-- フォントはあとで変更する。丸明オールドに近いものを使用予定。 -->
+    <meta charset="UTF-8">
+    <title>ざぶとんだより</title>
+  </head>
+
+  <body>
+    <!-- タイトル -->
+    <div class="header">
+      <h1 class="title">
+        <%= link_to "ざぶとんだより ※showページ", root_path %>
+      </h1>
+      <div class='lists'>
+        <ul class='lists-right'>
+        <%# ログイン時の見た目設定 %>
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <li><%= "#{current_user.nickname}ログイン中//" %></li>
+            <li><%= link_to "管理者用:投稿ページ", new_admin_event_path, class: "user-nickname" %></li>
+            <li><%= link_to "管理者:ログアウト", destroy_user_session_path, method: :delete, class: "logout" %></li>
+          <% else %>
+            <li><%= link_to "#{current_user.nickname}さんはログイン中", user_path(current_user.id), class: "user-nickname"%></li>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%></li>
+          <% end %>
+        <% else %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <!-- データを表示する日付を表示する -->
+    <div class="schedule">
+      <!-- 仮で当日の日付表示中 -->
+      <%= @show.start_time %>:本日の番組
+    </div>
+    <!-- 寄席の詳細情報 -->
+    <div class=stage-info>
+      <!-- 演芸場をタブで表記する -->
+      <div id="tabcontrol" class="theater" >
+        <a href="#tabpage1">新宿末廣亭 /</a>
+        <a href="#tabpage2">池袋演芸場 /</a>
+        <a href="#tabpage3">浅草演芸ホール /</a>
+        <a href="#tabpage4">上野鈴本</a>
+      </div>
+      <!-- 2-出演者情報・縦書きにする -->
+      <div id="tabbody" class="comedian">
+        <div id ="tabpage1" class="comedian-day">
+          ※直打ち込み文字<br>
+          <% @shows.each do |event| %>
+            <% if (event.start_time == @show.start_time) && (event.theater_id == 1) && (event.daynight_id == 1) %>
+              <p><%= event.start_time %></p>
+              <p><%= event.theater.name %></p>
+              <p><%= event.daynight.name %>席</p>
+              <%# 出演者の名前 %>
+              <% event.event_comedians.each do |event_comedian| %>
+                <% if event_comedian.comedian_id != 0 %>
+                  <p>一．<%= event_comedian.comedian.name %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+          <input type="button" value="いいね！" class="like">
+        </div>
+        <div id ="tabpage1" class="comedian-night">
+          ※直打ち込み文字<br>
+          <% @shows.each do |event| %>
+            <% if (event.start_time == @show.start_time) && (event.theater_id == 1) && (event.daynight_id == 2) %>
+              <p><%= event.start_time %></p>
+              <p><%= event.theater.name %></p>
+              <p><%= event.daynight.name %>席</p>
+              <%# エラー中・要修正 %>
+              <% event.event_comedians.each do |event_comedian| %>
+                <% if event_comedian.comedian_id != 0 %>
+                  <p>一．<%= event_comedian.comedian.name %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+          <input type="button" value="いいね！" class="like">
+        </div>
+
+        <div id="tabpage2" class="comedian-day">
+          池袋演芸場 昼席<br>
+          ああああああああ
+          <input type="button" value="いいね！" class="like">
+        </div>
+        <div id="tabpage2" class="comedian-night">
+          池袋演芸場 昼席<br>
+          ああああああああ
+          <input type="button" value="いいね！" class="like">
+        </div>
+
+        <div id="tabpage3" class="comedian-day">
+          浅草演芸ホール 昼席<br>
+          ああああああああ
+          <input type="button" value="いいね！" class="like">
+        </div>
+        <div id="tabpage3" class="comedian-night">
+          浅草演芸ホール 夜席<br>
+          ああああああああ
+          <input type="button" value="いいね！" class="like">
+        </div>
+
+        <div id="tabpage4" class="comedian-day">
+          上野鈴本 昼席<br>
+          ああああああああ
+          <input type="button" value="いいね！" class="like">
+        </div>
+        <div id="tabpage4" class="comedian-night">
+          上野鈴本 夜席<br>
+          ああああああああ
+          <input type="button" value="いいね！" class="like">
+        </div>
+      </div>
+
+
+      <!-- 詳細情報 -->
+      <div class="info">
+        <!-- 3-左上にTwitter -->
+        <div class="twitter">
+          <a class="twitter-timeline" data-lang="ja" data-width="600px" data-height="1150px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+        <!-- 4-左下にMAP -->
+        <div class="map", id="map">
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>"></script>
+        </div>
+        <!-- 5-右側にカレンダー -->
+        <div class="calendar">
+          <%= month_calendar events: @events do |date, events| %>
+            <%= date.day %><br>
+            <% events.each do |event| %>
+              <% if event.daynight_id == 1 %>
+                <% daynight = "昼" %>
+              <% else %>
+                <% daynight = "夜" %>
+              <% end %>
+
+              <% dd = event.start_time.day %>
+              <% if event.theater_id == 1 %>
+                <% if dd > 0 && dd < 11 %>
+                    <p id="event"><%= link_to "上席:#{daynight}", event_path(event.id) %></p>
+                <% elsif dd > 10 && dd < 21 %>
+                    <p id="event"><%= link_to "中席:#{daynight}", event_path(event.id) %></p>
+                <% elsif dd > 20 && dd < 31 %>
+                    <p id="event"><%= link_to "下席:#{daynight}", event_path(event.id) %></p>
+                <% else %>
+                  <p id="event"><%= link_to "余一会:#{daynight}", event_path(event.id) %></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div> 
+      </div>
+
+    </div>
+  </body>
+</html>
