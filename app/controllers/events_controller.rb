@@ -1,13 +1,12 @@
 class EventsController < ApplicationController
   def index
     @events = Event.all
-    #本番環境の表示のためコメントアウト
-    #@event = Event.find(1)
-    #@event_comedian = EventComedian.find(1)
   end
 
-  private
-  def event_parameter
-    params.require(:event).permit(:theater_id, :startday, :daynight_id)
+  def show
+    @events = Event.all
+    @show = Event.find(params[:id])
+    # 昼席と夜席の二つのデータを取得する
+    @shows = Event.where(start_time: @show.start_time, theater_id: @show.theater_id)
   end
 end

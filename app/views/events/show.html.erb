@@ -10,7 +10,7 @@
     <!-- タイトル -->
     <div class="header">
       <h1 class="title">
-        ざぶとんだより
+        <%= link_to "ざぶとんだより ※showページ", root_path %>
       </h1>
       <div class='lists'>
         <ul class='lists-right'>
@@ -35,7 +35,7 @@
     <!-- データを表示する日付を表示する -->
     <div class="schedule">
       <!-- 仮で当日の日付表示中 -->
-      <%= Date.today %>:本日の番組
+      <%= @show.start_time %>:本日の番組
     </div>
     <!-- 寄席の詳細情報 -->
     <div class=stage-info>
@@ -50,8 +50,8 @@
       <div id="tabbody" class="comedian">
         <div id ="tabpage1" class="comedian-day">
           ※直打ち込み文字<br>
-          <% @events.each do |event| %>
-            <% if (event.start_time == Date.today) && (event.theater_id == 1) && (event.daynight_id == 1) %>
+          <% @shows.each do |event| %>
+            <% if (event.start_time == @show.start_time) && (event.theater_id == 1) && (event.daynight_id == 1) %>
               <p><%= event.start_time %></p>
               <p><%= event.theater.name %></p>
               <p><%= event.daynight.name %>席</p>
@@ -67,8 +67,8 @@
         </div>
         <div id ="tabpage1" class="comedian-night">
           ※直打ち込み文字<br>
-          <% @events.each do |event| %>
-            <% if (event.start_time == Date.today) && (event.theater_id == 1) && (event.daynight_id == 2) %>
+          <% @shows.each do |event| %>
+            <% if (event.start_time == @show.start_time) && (event.theater_id == 1) && (event.daynight_id == 2) %>
               <p><%= event.start_time %></p>
               <p><%= event.theater.name %></p>
               <p><%= event.daynight.name %>席</p>
