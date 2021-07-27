@@ -35,7 +35,7 @@
     <!-- データを表示する日付を表示する -->
     <div class="schedule">
       <!-- 仮で当日の日付表示中 -->
-      <%= @show.start_time %>:本日の番組
+      <%= @show.start_time %>の番組
     </div>
     <!-- 寄席の詳細情報 -->
     <div class=stage-info>
@@ -83,50 +83,64 @@
           <input type="button" value="いいね！" class="like">
         </div>
 
+        <%# 池袋演芸場 %>
         <div id="tabpage2" class="comedian-day">
-          池袋演芸場 昼席<br>
-          ああああああああ
+          ※これは直打ち込み文字<br>
+          <% @shows.each do |event| %>
+            <%= render partial: "ikebukuro_hiru", locals: { event: event } %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
-        <div id="tabpage2" class="comedian-night">
-          池袋演芸場 昼席<br>
-          ああああああああ
+        <div id ="tabpage2" class="comedian-night">
+          ※これは直打ち込み文字<br>
+          <% @shows.each do |event| %>
+            <%= render partial: "ikebukuro_yoru", locals: { event: event } %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
 
+        <%# 浅草演芸ホール %>
         <div id="tabpage3" class="comedian-day">
-          浅草演芸ホール 昼席<br>
-          ああああああああ
+          ※これは直打ち込み文字<br>
+          <% @shows.each do |event| %>
+            <%= render partial: "asakusa_hiru", locals: { event: event } %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
-        <div id="tabpage3" class="comedian-night">
-          浅草演芸ホール 夜席<br>
-          ああああああああ
+        <div id ="tabpage3" class="comedian-night">
+          ※これは直打ち込み文字<br>
+          <% @shows.each do |event| %>
+            <%= render partial: "asakusa_yoru", locals: { event: event } %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
 
+        <%# 上野鈴本 %>
         <div id="tabpage4" class="comedian-day">
-          上野鈴本 昼席<br>
-          ああああああああ
+           ※これは直打ち込み文字<br>
+          <% @shows.each do |event| %>
+            <%= render partial: "ueno_hiru", locals: { event: event } %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
-        <div id="tabpage4" class="comedian-night">
-          上野鈴本 夜席<br>
-          ああああああああ
+        <div id ="tabpage4" class="comedian-night">
+          ※これは直打ち込み文字<br>
+          <% @shows.each do |event| %>
+            <%= render partial: "ueno_yoru", locals: { event: event } %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
       </div>
 
-
       <!-- 詳細情報 -->
-      <div class="info">
+      <div id="tabpage1" class="info">
         <!-- 3-左上にTwitter -->
         <div class="twitter">
-          <a class="twitter-timeline" data-lang="ja" data-width="600px" data-height="1150px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a class="twitter-timeline" data-lang="ja" data-width="600px" data-height="1100px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
         <!-- 4-左下にMAP -->
         <div class="map", id="map">
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>"></script>
+          <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>"></script>
         </div>
         <!-- 5-右側にカレンダー -->
         <div class="calendar">
@@ -138,7 +152,6 @@
               <% else %>
                 <% daynight = "夜" %>
               <% end %>
-
               <% dd = event.start_time.day %>
               <% if event.theater_id == 1 %>
                 <% if dd > 0 && dd < 11 %>
@@ -155,6 +168,8 @@
           <% end %>
         </div> 
       </div>
+
+
 
     </div>
   </body>
