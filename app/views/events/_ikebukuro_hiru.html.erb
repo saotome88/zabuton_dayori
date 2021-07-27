@@ -1,0 +1,11 @@
+<% if (event.start_time == Date.today) && (event.theater_id == 2) && (event.daynight_id == 1) %>
+  <p><%= event.start_time %></p>
+  <p><%= event.theater.name %></p>
+  <p><%= event.daynight.name %>席</p>
+  <%# 出演者の名前 %>
+  <% event.event_comedians.each do |event_comedian| %>
+    <% if event_comedian.comedian_id != 0 %>
+      <p>一．<%= event_comedian.comedian.name %></p>
+    <% end %>
+  <% end %>
+<% end %>

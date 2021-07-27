@@ -49,80 +49,74 @@
       <!-- 2-出演者情報・縦書きにする -->
       <div id="tabbody" class="comedian">
         <div id ="tabpage1" class="comedian-day">
-          ※直打ち込み文字<br>
+          ※これは直打ち込み文字<br>
           <% @events.each do |event| %>
-            <% if (event.start_time == Date.today) && (event.theater_id == 1) && (event.daynight_id == 1) %>
-              <p><%= event.start_time %></p>
-              <p><%= event.theater.name %></p>
-              <p><%= event.daynight.name %>席</p>
-              <%# 出演者の名前 %>
-              <% event.event_comedians.each do |event_comedian| %>
-                <% if event_comedian.comedian_id != 0 %>
-                  <p>一．<%= event_comedian.comedian.name %></p>
-                <% end %>
-              <% end %>
-            <% end %>
+            <%= render partial: "shinjuku_hiru", locals: { event: event } %>
           <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
         <div id ="tabpage1" class="comedian-night">
-          ※直打ち込み文字<br>
+          ※これは直打ち込み文字<br>
           <% @events.each do |event| %>
-            <% if (event.start_time == Date.today) && (event.theater_id == 1) && (event.daynight_id == 2) %>
-              <p><%= event.start_time %></p>
-              <p><%= event.theater.name %></p>
-              <p><%= event.daynight.name %>席</p>
-              <%# エラー中・要修正 %>
-              <% event.event_comedians.each do |event_comedian| %>
-                <% if event_comedian.comedian_id != 0 %>
-                  <p>一．<%= event_comedian.comedian.name %></p>
-                <% end %>
-              <% end %>
-            <% end %>
+            <%= render partial: "shinjuku_yoru", locals: { event: event } %>
           <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
 
+        <%# 池袋演芸場 %>
         <div id="tabpage2" class="comedian-day">
-          池袋演芸場 昼席<br>
-          ああああああああ
+          ※これは直打ち込み文字<br>
+          <% @events.each do |event| %>
+            <%= render partial: "ikebukuro_hiru", locals: { event: event } %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
-        <div id="tabpage2" class="comedian-night">
-          池袋演芸場 昼席<br>
-          ああああああああ
+        <div id ="tabpage2" class="comedian-night">
+          ※これは直打ち込み文字<br>
+          <% @events.each do |event| %>
+            <%= render partial: "ikebukuro_yoru", locals: { event: event } %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
 
+        <%# 浅草演芸ホール %>
         <div id="tabpage3" class="comedian-day">
-          浅草演芸ホール 昼席<br>
-          ああああああああ
+          ※これは直打ち込み文字<br>
+          <% @events.each do |event| %>
+            <%= render partial: "asakusa_hiru", locals: { event: event } %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
-        <div id="tabpage3" class="comedian-night">
-          浅草演芸ホール 夜席<br>
-          ああああああああ
+        <div id ="tabpage3" class="comedian-night">
+          ※これは直打ち込み文字<br>
+          <% @events.each do |event| %>
+            <%= render partial: "asakusa_yoru", locals: { event: event } %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
 
+        <%# 上野鈴本 %>
         <div id="tabpage4" class="comedian-day">
-          上野鈴本 昼席<br>
-          ああああああああ
+           ※これは直打ち込み文字<br>
+          <% @events.each do |event| %>
+            <%= render partial: "ueno_hiru", locals: { event: event } %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
-        <div id="tabpage4" class="comedian-night">
-          上野鈴本 夜席<br>
-          ああああああああ
+        <div id ="tabpage4" class="comedian-night">
+          ※これは直打ち込み文字<br>
+          <% @events.each do |event| %>
+            <%= render partial: "ueno_yoru", locals: { event: event } %>
+          <% end %>
           <input type="button" value="いいね！" class="like">
         </div>
       </div>
-
 
       <!-- 詳細情報 -->
       <div class="info">
         <!-- 3-左上にTwitter -->
         <div class="twitter">
-          <a class="twitter-timeline" data-lang="ja" data-width="600px" data-height="1150px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+          <a class="twitter-timeline" data-lang="ja" data-width="600px" data-height="1100px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
         <!-- 4-左下にMAP -->
         <div class="map", id="map">
