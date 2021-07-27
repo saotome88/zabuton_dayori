@@ -116,7 +116,7 @@ a {
 /* 場所ごとの詳細情報 */
 .info {
   background-color: blue;
-  height: 1150px;
+  height: 1100px;
   width: 1450px;
   position: relative;
   margin: auto;
@@ -124,7 +124,7 @@ a {
 
 .calendar {
   background-color: whitesmoke;
-  height: 710px;
+  height: 650px;
   width: 850px;
   position: absolute;
   top: 0;
@@ -135,7 +135,7 @@ a {
   height: 450px;
   width: 850px;
   position: absolute;
-  top: 710px;
+  top: 650px;
 }
 
 .twitter {
