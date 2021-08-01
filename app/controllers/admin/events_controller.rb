@@ -1,6 +1,7 @@
 class Admin::EventsController < ApplicationController
   #管理者ユーザー以外でアクションをしようとするとトップページに遷移する
   before_action :if_not_admin
+  #before_action :basic_auth
 
   #管理者だけにさせたいアクションはここに記述する！
   def new
@@ -27,6 +28,12 @@ class Admin::EventsController < ApplicationController
   def if_not_admin
     redirect_to root_path unless current_user.admin?
   end
+
+  #def basic_auth
+   # authenticate_or_request_with_http_basic do |username, password|
+    #  username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
+    #end
+  #end
 
   def event_params
     params.require(:event_comedian_form).permit(:theater_id, :start_time, :daynight_id, comedian_ids: [])
