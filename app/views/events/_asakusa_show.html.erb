@@ -1,0 +1,108 @@
+<!-- 昼席の表示 -->
+<div class="card yose-hiru bg-50-white">
+    <div class="card-body text-box">
+        <div class="card-text comedians text-dark">
+            <% shows.each do |event| %>
+              <% if (event.start_time == selectday.start_time) && (event.theater_id == 3) && (event.daynight_id == 1) %>
+                <p><%= event.start_time %></p>
+                <p><%= event.theater.name %></p>
+                <p><%= event.daynight.name %>席</p>
+                <%# 出演者の名前 %>
+                <% event.event_comedians.each do |event_comedian| %>
+                  <% if event_comedian.comedian_id != 0 %>
+                    <div class="wood">
+                      <%= image_tag("wood.jpg", class: "img-fluid") %>
+                      <p class="comedian-name">
+                        一．<%= event_comedian.comedian.name %>
+                      </p>
+                    </div>
+                  <% end %>
+                <% end %>
+              <% end %>
+        <% end %>
+            <input type="button" value="いいね！" class="like">
+        </div>
+    </div>
+</div>
+
+<!-- 夜席の表示 -->
+<div class="card yose-yoru bg-50-white">
+    <div class="card-body text-box">
+        <div class="card-text comedians text-dark">
+            <% shows.each do |event| %>
+              <% if (event.start_time == selectday.start_time) && (event.theater_id == 3) && (event.daynight_id == 2) %>
+                <p><%= event.start_time %></p>
+                <p><%= event.theater.name %></p>
+                <p><%= event.daynight.name %>席</p>
+                <%# 出演者の名前 %>
+                <% event.event_comedians.each do |event_comedian| %>
+                  <% if event_comedian.comedian_id != 0 %>
+                    <div class="wood">
+                      <%= image_tag("wood.jpg", class: "img-fluid") %>
+                      <p class="comedian-name">
+                        一．<%= event_comedian.comedian.name %>
+                      </p>
+                    </div>
+                  <% end %>
+                <% end %>
+            <% end %>
+          <% end %>
+          <input type="button" value="いいね！" class="like">
+        </div>
+    </div>
+</div>
+
+
+<div class="d-flex">
+  <!-- カレンダー -->
+  <div class="card calendar col-md-7 order-md-1 order-sd-2">
+    <div class="card-body">
+        <div class="card-text text-dark">
+            <%= month_calendar events: @events do |date, events| %>
+              <%= date.day %><br>
+              <% events.each do |event| %>
+                <% if event.daynight_id == 1 %>
+                  <% daynight = "昼" %>
+                <% else %>
+                  <% daynight = "夜" %>
+                <% end %>
+
+                <% dd = event.start_time.day %>
+                <% if event.theater_id == 3 %>
+                  <% if dd > 0 && dd < 11 %>
+                      <p id="event"><%= link_to "上席:#{daynight}", event_path(event.id) %></p>
+                  <% elsif dd > 10 && dd < 21 %>
+                      <p id="event"><%= link_to "中席:#{daynight}", event_path(event.id) %></p>
+                  <% elsif dd > 20 && dd < 31 %>
+                      <p id="event"><%= link_to "下席:#{daynight}", event_path(event.id) %></p>
+                  <% else %>
+                    <p id="event"><%= link_to "余一会:#{daynight}", event_path(event.id) %></p>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+        </div>
+    </div>
+  </div>
+  <!-- Twitter -->
+  <div class="card twitter col-md-5 order-md-2  order-sd-1 bg-transparent">
+      <div class="card-body">
+          <div class="card-text text-dark">
+            <div class="twitter">
+              <a class="twitter-timeline" data-lang="ja" data-height="600" data-theme="dark" href="https://twitter.com/asakusa_engei?ref_src=twsrc%5Etfw">Tweets by asakusa_engei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- MAP -->
+<div class="card map col-md-7 order-md-3 order-sd-3 bg-transparent">
+    <div class="card-body">
+        <div class="card-text text-dark">
+          <div class="map", id="map_03">
+            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>"></script>
+          </div>
+        </div>
+    </div>
+</div>
