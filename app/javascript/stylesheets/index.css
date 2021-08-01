@@ -1,0 +1,192 @@
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Medium");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Yu Gothic";
+  src: local("Yu Gothic Bold");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue Regular");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: local("Helvetica Neue Regular");
+  font-weight: 200;
+}
+
+body,
+tooltip,
+popover {
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
+}
+
+@media all and (-ms-high-contrast: none) {
+  body,
+  tooltip,
+  popover {
+    font-family: Verdana, Meiryo, sans-serif;
+  }
+}
+
+.container-fluid {
+  background-image: url('../images/wallpaper.jpg');
+  padding-top:5px;
+}
+
+/* ナビゲーションバー */
+.navbar {
+  height: 60px;
+}
+
+.logo-mini {
+  padding-top: 3px;
+}
+
+.list-left p {
+  padding-top: 15px;
+  padding-left: 5px;
+  font-size: 16px;
+}
+
+.menu {
+  font-size: 16px;
+  margin-right: 10px;
+  text-align: end;
+}
+
+#menu {
+  z-index: 20;
+}
+
+.nav-item .menu {
+  color: white;
+}
+
+/* カルーセル */
+.copy-img {
+  margin-top: 80px;
+  margin-right: 80px;
+  width: 80%;
+}
+
+/*-- 当日の日付表示 */
+.schedule {
+  height: 50px;
+  width: 100%;
+}
+
+.today {
+  text-align: center;
+  font-size: 30px;
+}
+
+/* 演芸場タグ */
+.theaters {
+  height: 70px;
+ }
+ 
+ .nav-item .theater{
+   margin: auto 20px auto 0;
+   font-size: 18px;
+ }
+ 
+ .ueno {
+   margin-right: 20px;
+ }
+
+/* 番組表 */
+/* 芸名表示は縦書きの右寄りにする */
+.yose-hiru {
+  background-image: url('../images/washi.png');
+}
+
+.yose-yoru {
+  background-image: url('../images/washi.png');
+}
+
+.text-box {
+  text-align: center;
+}
+.comedians {
+  -webkit-writing-mode: vertical-rl;
+  -moz-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  -ms-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+  display: inline-block;
+  height: 180px;
+  overflow: scroll;
+}
+
+.comedians .comedian-name {
+  padding-right: 20px;
+}
+
+.event-info {
+  font-size: 30px;
+  padding: 0;
+}
+
+.wood {
+  position: relative;
+  margin-left: 5px;
+}
+
+.wood p {
+  position: absolute;
+  top: 16px;
+  left: -5px;
+  font-size: 18px;
+  color: black;
+}
+
+.like {
+  margin-top: auto;
+}
+
+.washi-img {
+  position: relative;
+}
+
+.card-doby {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* calendar */
+.calendar {
+  margin-top: 20px;
+}
+
+/* MAP */
+.map {
+  height: 300px;
+  width: 80%;
+}
