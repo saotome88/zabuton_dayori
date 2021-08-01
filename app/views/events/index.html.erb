@@ -1,161 +1,132 @@
-<!DOCTYPE HTML>
-<html>
-  <head>
-    <!-- フォントはあとで変更する。丸明オールドに近いものを使用予定。 -->
-    <meta charset="UTF-8">
-    <title>ざぶとんだより</title>
-  </head>
-
-  <body>
-    <!-- タイトル -->
-    <div class="header">
-      <h1 class="title">
-        ざぶとんだより
-      </h1>
-      <div class='lists'>
-        <ul class='lists-right'>
-        <%# ログイン時の見た目設定 %>
-        <% if user_signed_in? %>
-          <% if current_user.admin? %>
-            <li><%= "#{current_user.nickname}ログイン中//" %></li>
-            <li><%= link_to "管理者用:投稿ページ", new_admin_event_path, class: "user-nickname" %></li>
-            <li><%= link_to "管理者:ログアウト", destroy_user_session_path, method: :delete, class: "logout" %></li>
+<!-- タイトル -->
+<div class="header">
+  <!-- *** ナビゲーションバー *** -->
+  <nav class="navbar navbar-expand-md bg-dark">
+      <div class="d-inline-flex list-left">
+        <a class="nevbar-brand logo-mini"><%= image_tag("logo_mini.jpg", class: "img-fluid", id: "navbar-logo") %></a>
+        <p class="text-white">寄席情報アプリ〜ざぶとんだより〜</p>
+      </div>
+      <button class="navbar-toggler btn-outline-white" type="button" data-toggle="collapse" data-target="#menu">
+        <p class="m-auto text-white">MENU</p>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ml-auto bg-dark">
+          <%# ログイン時の表示 %>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to "#{current_user.nickname}さんはログイン中", user_path(current_user.id), class: "nav-link menu" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link menu" %>
+            </li>
           <% else %>
-            <li><%= link_to "#{current_user.nickname}さんはログイン中", user_path(current_user.id), class: "user-nickname"%></li>
-            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout"%></li>
+            <li class="nav-item">
+              <%= link_to 'ログイン', new_user_session_path, class: "nav-link menu" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '新規登録', new_user_registration_path, class: "nav-link menu" %>
+            </li>
           <% end %>
-        <% else %>
-          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-        <% end %>
         </ul>
       </div>
+  </nav>
+</div>
+
+<!-- 以下がコンテナクラスに入る -->
+<div class="container-fluid">
+   <!-- *** スライド写真とコピー *** -->
+  <div class="card bg-transparent">
+      <div id="photo" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+              <li data-target="#photo" data-slide-to="0" class="active"></li>
+              <li data-target="#photo" data-slide-to="1"></li>
+              <li data-target="#photo" data-slide-to="2"></li>
+              <li data-target="#photo" data-slide-to="3"></li>
+          </ol>
+          <div class="carousel-innner">
+              <div class="carousel-item active">
+                  <%= image_tag("yose_01.jpg", class: "d-block img-fluid m-auto w-70") %>
+              </div> 
+              <div class="carousel-item">
+                  <%= image_tag("yose_02.jpg", class: "d-block img-fluid m-auto w-70") %>
+              </div>
+              <div class="carousel-item">
+                  <%= image_tag("yose_03.jpg", class: "d-block img-fluid m-auto w-70") %>
+              </div>
+              <div class="carousel-item">
+                  <%= image_tag("yose_04.jpg", class: "d-block img-fluid m-auto w-70") %>
+              </div> 
+          </div>
+      </div>
+      <div class="card-img-overlay">
+        <%= image_tag("copy.png", class: "card-body img-fluid copy-img") %>
+      </div>
+  </div>
+  <br>
+  <br>
+
+
+  <!-- 当日の日付表示 -->
+  <div class="schedule">
+    <p class="today text-white"><%= Date.today %>/本日の番組</p>
+  </div>
+  <br>
+  <!-- *** 演芸場タブ *** -->
+  <div class="d-flex theaters">
+      <ul class="nav nav-pills ml-auto">
+          <li class="nav-item">
+              <a class="btn btn-outline-secondary active text-white theater" href="#shinjuku" data-toggle="tab">新宿末廣亭</a>
+          </li>
+          <li class="nav-item">
+              <a class="btn btn-outline-secondary text-white theater" href="#ikebukuro" data-toggle="tab">池袋演芸場</a>
+          </li>
+          <li class="nav-item">
+              <a class="btn btn-outline-secondary text-white theater" href="#asakusa" data-toggle="tab">浅草演芸ホール</a>
+          </li>
+          <li class="nav-item ueno">
+              <a class="btn btn-outline-secondary text-white theater" href="#ueno" data-toggle="tab">上野鈴本</a>
+          </li>
+      </ul>
+  </div>
+
+  <!-- *** タブの中身 *** -->
+  <div class="tab-content row flex-nowrap ml-3 mr-3">
+    <!-- *** 新宿末廣亭 *** -->
+    <div id="shinjuku" class="tab-pane active col-12">
+      <%= render partial: "shinjuku", locals: { events: @events } %>
     </div>
 
-    <!-- データを表示する日付を表示する -->
-    <div class="schedule">
-      <!-- 仮で当日の日付表示中 -->
-      <%= Date.today %>:本日の番組
+    <!-- *** 池袋演芸場 *** -->
+    <div id="ikebukuro" class="tab-pane col-12">
+      <%= render partial: "ikebukuro", locals: { events: @events } %>
     </div>
-    <!-- 寄席の詳細情報 -->
-    <div class=stage-info>
-      <!-- 演芸場をタブで表記する -->
-      <div id="tabcontrol" class="theater" >
-        <a href="#tabpage1">新宿末廣亭 /</a>
-        <a href="#tabpage2">池袋演芸場 /</a>
-        <a href="#tabpage3">浅草演芸ホール /</a>
-        <a href="#tabpage4">上野鈴本</a>
-      </div>
-      <!-- 2-出演者情報・縦書きにする -->
-      <div id="tabbody" class="comedian">
-        <div id ="tabpage1" class="comedian-day">
-          ※直打ち込み文字<br>
-          <% @events.each do |event| %>
-            <% if (event.start_time == Date.today) && (event.theater_id == 1) && (event.daynight_id == 1) %>
-              <p><%= event.start_time %></p>
-              <p><%= event.theater.name %></p>
-              <p><%= event.daynight.name %>席</p>
-              <%# 出演者の名前 %>
-              <% event.event_comedians.each do |event_comedian| %>
-                <% if event_comedian.comedian_id != 0 %>
-                  <p>一．<%= event_comedian.comedian.name %></p>
-                <% end %>
-              <% end %>
-            <% end %>
-          <% end %>
-          <input type="button" value="いいね！" class="like">
-        </div>
-        <div id ="tabpage1" class="comedian-night">
-          ※直打ち込み文字<br>
-          <% @events.each do |event| %>
-            <% if (event.start_time == Date.today) && (event.theater_id == 1) && (event.daynight_id == 2) %>
-              <p><%= event.start_time %></p>
-              <p><%= event.theater.name %></p>
-              <p><%= event.daynight.name %>席</p>
-              <%# エラー中・要修正 %>
-              <% event.event_comedians.each do |event_comedian| %>
-                <% if event_comedian.comedian_id != 0 %>
-                  <p>一．<%= event_comedian.comedian.name %></p>
-                <% end %>
-              <% end %>
-            <% end %>
-          <% end %>
-          <input type="button" value="いいね！" class="like">
-        </div>
 
-        <div id="tabpage2" class="comedian-day">
-          池袋演芸場 昼席<br>
-          ああああああああ
-          <input type="button" value="いいね！" class="like">
-        </div>
-        <div id="tabpage2" class="comedian-night">
-          池袋演芸場 昼席<br>
-          ああああああああ
-          <input type="button" value="いいね！" class="like">
-        </div>
-
-        <div id="tabpage3" class="comedian-day">
-          浅草演芸ホール 昼席<br>
-          ああああああああ
-          <input type="button" value="いいね！" class="like">
-        </div>
-        <div id="tabpage3" class="comedian-night">
-          浅草演芸ホール 夜席<br>
-          ああああああああ
-          <input type="button" value="いいね！" class="like">
-        </div>
-
-        <div id="tabpage4" class="comedian-day">
-          上野鈴本 昼席<br>
-          ああああああああ
-          <input type="button" value="いいね！" class="like">
-        </div>
-        <div id="tabpage4" class="comedian-night">
-          上野鈴本 夜席<br>
-          ああああああああ
-          <input type="button" value="いいね！" class="like">
-        </div>
-      </div>
-
-
-      <!-- 詳細情報 -->
-      <div class="info">
-        <!-- 3-左上にTwitter -->
-        <div class="twitter">
-          <a class="twitter-timeline" data-lang="ja" data-width="600px" data-height="1150px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
-        <!-- 4-左下にMAP -->
-        <div class="map", id="map">
-        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>"></script>
-        </div>
-        <!-- 5-右側にカレンダー -->
-        <div class="calendar">
-          <%= month_calendar events: @events do |date, events| %>
-            <%= date.day %><br>
-            <% events.each do |event| %>
-              <% if event.daynight_id == 1 %>
-                <% daynight = "昼" %>
-              <% else %>
-                <% daynight = "夜" %>
-              <% end %>
-
-              <% dd = event.start_time.day %>
-              <% if event.theater_id == 1 %>
-                <% if dd > 0 && dd < 11 %>
-                    <p id="event"><%= link_to "上席:#{daynight}", event_path(event.id) %></p>
-                <% elsif dd > 10 && dd < 21 %>
-                    <p id="event"><%= link_to "中席:#{daynight}", event_path(event.id) %></p>
-                <% elsif dd > 20 && dd < 31 %>
-                    <p id="event"><%= link_to "下席:#{daynight}", event_path(event.id) %></p>
-                <% else %>
-                  <p id="event"><%= link_to "余一会:#{daynight}", event_path(event.id) %></p>
-                <% end %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div> 
-      </div>
-
+    <!-- *** 浅草演芸ホール *** -->
+    <div id="asakusa" class="tab-pane col-12">
+      <%= render partial: "asakusa", locals: { events: @events } %>
     </div>
-  </body>
-</html>
+
+    <!-- *** 上野広小路亭 *** -->
+    <div id="ueno" class="tab-pane col-12">
+      <%= render partial: "ueno", locals: { events: @events } %>
+    </div>
+  </div><%# タブの中身の終了 %>
+
+<br>
+<br>
+    <%# 管理者ログインは最下部 %>
+    <!-- *** フッター,管理者パス *** -->
+    <% if user_signed_in? && current_user.admin? %>
+      <div class="footer-extend  fixed-bottom">
+          <ul class="nav nav-tabs">
+              <li class="nav-item dropdown bg-dark">
+                  <a class="nav-link dropdown-toggle bg-dark text-white" data-toggle="dropdown" href="#">管理者 専用</a>
+                  <div class="dropdown-menu bg-dark">
+                      <%= link_to "管理者用:投稿ページ", new_admin_event_path, class: "dropdown-item text-white" %>
+                      <%= link_to "管理者:ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item text-white" %>
+                  </div>
+              </li>
+          </ul>
+      </div>
+    <% end %>
+</div>  <%# containerの終了 %>
