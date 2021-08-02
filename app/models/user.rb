@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :reaction_liked_events, through: :reaction_likes, source: :event
 
   # ユーザーがすでにいいねをしているかどうかの判定をする。
-  def already_liked?(event)
+  def already_reaction_liked?(event)
     self.reaction_likes.exists?(event_id: event.id)
   end
 end
