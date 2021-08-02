@@ -1,7 +1,7 @@
 class ReactionLikesController < ApplicationController
   before_action :authenticate_user!
   def create
-    @reaction_like = current_user.reaction_likes.create(event_id: params[:event_id])
+    @reaction_like = ReactionLike.create(event_id: params[:event_id], user_id: current_user.id)
     redirect_back(fallback_location: root_path)
   end
 
