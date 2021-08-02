@@ -17,16 +17,21 @@
                       </p>
                     </div>
                   <% end %>
+                <% end %> <!-- 芸名表示のeachメソッド終わり -->
+                <!-- いいねボタン表示 -->
+                <% if current_user.already_reaction_liked?(event) %>
+                  <%= button_to 'いいね削除', event_reaction_like_path(event, current_user), method: :delete %>
+                <% else %>
+                  <%= button_to 'いいね', event_reaction_likes_path(event), method: :post %>
                 <% end %>
-              <% end %>
-            <% end %>
-            <input type="button" value="いいね！" class="like">
+              <% end %> <!-- 昼席のif指定終わり -->
+            <% end %> <!-- eventsのeachメソッド終わり -->
         </div>
     </div>
 </div>
 
 <!-- 夜席の表示 -->
-<div class="card col-12 yose-yoru">
+<div class="card col-12 yose-yoru bg-transparent">
     <div class="card-body text-box">
         <div class="card-text comedians">
             <% events.each do |event| %>
@@ -44,18 +49,23 @@
                       </p>
                     </div>
                   <% end %>
-                <% end %>
-              <% end %>
-            <% end %>
-            <input type="button" value="いいね！" class="like">
+                <% end %> <!-- 芸名表示のeachメソッド終わり -->
+                <!-- いいねボタン表示 -->
+                  <% if current_user.already_reaction_liked?(event) %>
+                    <%= button_to 'いいね削除', event_reaction_like_path(event, current_user), method: :delete %>
+                  <% else %>
+                    <%= button_to 'いいね', event_reaction_likes_path(event), method: :post %>
+                  <% end %>
+                <% end %> <!-- 夜席のif指定終わり -->
+            <% end %> <!-- eventsのeachメソッド終わり -->
         </div>
     </div>
 </div>
 
-<div class="d-md-flex ca-twitter">
+<div class="info col-12 ca-twitter">
   <!-- カレンダー -->
-  <div class="card calendar col-6 order-md-1">
-    <div class="card-body">
+  <div class="card calendar">
+    <div class="card-body  order-md-1">
         <div class="card-text text-dark calendar-text">
             <%= month_calendar events: @events do |date, events| %>
               <%= date.day %><br>
@@ -83,23 +93,24 @@
         </div>
     </div>
   </div>
+
+  <!-- MAP -->
+  <div class="card bg-transparent map">
+      <div class="card-body">
+            <div class="map-in order-md-3" id="map_01">
+              <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>"></script>
+            </div>
+      </div>
+  </div>
+
   <!-- Twitter -->
-  <div class="card twitter col-6 order-md-2 bg-transparent">
+  <div class="card bg-transparent twitter">
       <div class="card-body">
           <div class="card-text text-dark">
-            <div class="twitter-in">
-              <a class="twitter-timeline" data-lang="ja" data-height="500px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <div class="twitter-in order-md-2">
+              <a class="twitter-timeline" data-lang="ja" data-height="1000px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
           </div>
       </div>
   </div>
-</div>
-
-<!-- MAP -->
-<div class="card col-12 order-md-3 bg-transparent map">
-    <div class="card-body">
-          <div class="map-in" id="map_01">
-            <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>"></script>
-          </div>
-    </div>
 </div>

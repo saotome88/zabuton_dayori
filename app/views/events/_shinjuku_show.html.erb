@@ -18,9 +18,14 @@
                     </div>
                   <% end %>
                 <% end %>
+                <!-- いいねボタン表示 -->
+                <% if current_user.already_reaction_liked?(event) %>
+                  <%= button_to 'いいね削除', event_reaction_like_path(event, current_user), method: :delete %>
+                <% else %>
+                  <%= button_to 'いいね', event_reaction_likes_path(event), method: :post %>
+                <% end %>
               <% end %>
         <% end %>
-            <input type="button" value="いいね！" class="like">
         </div>
     </div>
 </div>
@@ -45,9 +50,14 @@
                     </div>
                   <% end %>
                 <% end %>
+                <!-- いいねボタン表示 -->
+                <% if current_user.already_reaction_liked?(event) %>
+                  <%= button_to 'いいね削除', event_reaction_like_path(event, current_user), method: :delete %>
+                <% else %>
+                  <%= button_to 'いいね', event_reaction_likes_path(event), method: :post %>
+                <% end %>
             <% end %>
           <% end %>
-          <input type="button" value="いいね！" class="like">
         </div>
     </div>
 </div>
