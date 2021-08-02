@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_07_23_134155) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.text "text", null: false
-    t.bigint "reaction_like_id", null: false
+    t.bigint "reaction_like_id"
     t.index ["reaction_like_id"], name: "index_memos_on_reaction_like_id"
   end
 

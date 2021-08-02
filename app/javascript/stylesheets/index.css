@@ -90,6 +90,7 @@ popover {
   width: 50%;
   position : absolute;
   bottom: 20px;
+  left: 50px;
 }
 
 /*-- 当日の日付表示 */
@@ -163,27 +164,41 @@ popover {
   color: black;
 }
 
-.like {
-  position : absolute;
-  bottom: 20px;
+/* info */
+.info {
+  position: relative;
+  height: 1000px;
 }
 
 /* calendar */
 .calendar {
-  height: 500px;
-  margin-top: 22px;
+  height: 600px;
+  width: 50%;
+  margin-top: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .calendar-text p {
   font-size: 14px;
 }
 
-/* Twitter */
-.twitter {
-  margin-left: 30px;
-}
-
 /* MAP */
 .map-in {
-  height: 300px;
+  height: 390px;
+  width: 50%;
+  margin-top: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
+
+/* Twitter */
+.twitter {
+  width: 50%;
+  position: absolute;
+  top: -657px;
+  left: 50%;
+}
+
