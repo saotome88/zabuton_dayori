@@ -8,5 +8,5 @@ class Event < ApplicationRecord
 
   has_many :reaction_likes
   #「誰が」いいねをしたのかを取得する
-  has_many :liked_users, through: :reaction_likes, source: :user
+  has_many :reaction_liked_users, through: :reaction_likes, source: :user
 end
