@@ -1,4 +1,5 @@
 class MemosController < ApplicationController
+  before_action :authenticate_user!
 
   def new
     @memo = Memo.new

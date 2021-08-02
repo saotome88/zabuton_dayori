@@ -90,9 +90,9 @@ popover {
 
 /* カルーセル */
 .copy-img {
-  margin-top: 80px;
-  margin-right: 80px;
-  width: 80%;
+  width: 50%;
+  position : absolute;
+  bottom: 20px;
 }
 
 /*-- 当日の日付表示 */
@@ -167,26 +167,26 @@ popover {
 }
 
 .like {
-  margin-top: auto;
-}
-
-.washi-img {
-  position: relative;
-}
-
-.card-doby {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position : absolute;
+  bottom: 20px;
 }
 
 /* calendar */
 .calendar {
-  margin-top: 20px;
+  height: 500px;
+  margin-top: 22px;
+}
+
+.calendar-text p {
+  font-size: 14px;
+}
+
+/* Twitter */
+.twitter {
+  margin-left: 30px;
 }
 
 /* MAP */
-.map {
+.map-in {
   height: 300px;
-  width: 80%;
 }

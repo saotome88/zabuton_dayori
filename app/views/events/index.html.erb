@@ -14,17 +14,20 @@
           <%# ログイン時の表示 %>
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "#{current_user.nickname}さんはログイン中", user_path(current_user.id), class: "nav-link menu" %>
+              <%= link_to "#{current_user.nickname}さんはログイン中", user_path(current_user.id), class: "btn nav-link menu" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link menu" %>
+              <%= link_to "マイページへ", user_path(current_user.id), class: "btn nav-link menu" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn nav-link menu" %>
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to 'ログイン', new_user_session_path, class: "nav-link menu" %>
+              <%= link_to 'ログイン', new_user_session_path, class: "btn nav-link menu" %>
             </li>
             <li class="nav-item">
-              <%= link_to '新規登録', new_user_registration_path, class: "nav-link menu" %>
+              <%= link_to '新規登録', new_user_registration_path, class: "btn nav-link menu" %>
             </li>
           <% end %>
         </ul>
@@ -59,7 +62,7 @@
           </div>
       </div>
       <div class="card-img-overlay">
-        <%= image_tag("copy.png", class: "card-body img-fluid copy-img") %>
+        <%= image_tag("copy2.png", class: "card-body pt-5 img-fluid copy-img") %>
       </div>
   </div>
   <br>

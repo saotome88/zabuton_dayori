@@ -1,6 +1,6 @@
 function map() {
-  var latlng_01 = new google.maps.LatLng(35.69129219891356, 139.70593501342813);
-  var latlng_02 = new google.maps.LatLng(35.69129219891356, 139.70593501342813);
+  var latlng_01 = new google.maps.LatLng(35.69123991682207, 139.7060208437781);
+  var latlng_02 = new google.maps.LatLng(35.7319782277483, 139.71053876658866);
   var latlng_03 = new google.maps.LatLng(35.713609437409076, 139.79316806904131);
   var latlng_04 = new google.maps.LatLng(35.70937777898786, 139.7731515574054);
 
