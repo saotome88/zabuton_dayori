@@ -57,7 +57,7 @@
   <!-- カレンダー -->
   <div class="card calendar col-md-7 order-md-1 order-sd-2">
     <div class="card-body">
-        <div class="card-text text-dark">
+        <div class="card-text text-dark calendar-text">
             <%= month_calendar events: @events do |date, events| %>
               <%= date.day %><br>
               <% events.each do |event| %>
@@ -88,7 +88,7 @@
   <div class="card twitter col-md-5 order-md-2  order-sd-1 bg-transparent">
       <div class="card-body">
           <div class="card-text text-dark">
-            <div class="twitter">
+            <div class="twitter-in">
               <a class="twitter-timeline" data-lang="ja" data-width="500px" data-height="600px" data-theme="dark" href="https://twitter.com/suehirotei?ref_src=twsrc%5Etfw">Tweets by suehirotei</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
           </div>
@@ -97,10 +97,10 @@
 </div>
 
 <!-- MAP -->
-<div class="card map col-md-7 order-md-3 order-sd-3">
-    <div class="card-body  bg-danger">
+<div class="card map col-md-7 order-md-3 order-sd-3 bg-transparent">
+    <div class="card-body">
         <div class="card-text text-dark">
-          <div class="map", id="map_01">
+          <div class="map-in", id="map_01">
           <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_API_KEY"] %>"></script>
           </div>
         </div>
