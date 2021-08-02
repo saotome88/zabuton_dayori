@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2021_07_23_134155) do
   create_table "event_comedians", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "event_id"
+    t.bigint "event_id", null: false
     t.integer "comedian_id", null: false
     t.index ["event_id"], name: "index_event_comedians_on_event_id"
   end
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2021_07_23_134155) do
   create_table "reaction_likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id"
-    t.bigint "event_id"
+    t.bigint "user_id", null: false
+    t.bigint "event_id", null: false
     t.index ["event_id"], name: "index_reaction_likes_on_event_id"
     t.index ["user_id"], name: "index_reaction_likes_on_user_id"
   end
