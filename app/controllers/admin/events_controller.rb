@@ -26,7 +26,13 @@ class Admin::EventsController < ApplicationController
 
   private
   def if_not_admin
-    redirect_to root_path unless current_user.admin?
+    if user_signed_in?
+      if current_user.admin != true
+        redirect_to root_path
+      end
+    else
+      redirect_to root_path
+    end
   end
 
   #def basic_auth
