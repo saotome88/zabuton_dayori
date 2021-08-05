@@ -1,27 +1,36 @@
-# README
+# Name
+さぶとんだより
+<a href="https://zabuton-dayori.herokuapp.com/" alt="zabuton_dayori"></a>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* テストアカウント
+e-mail: test@test.com  
+password: 1234asdf  
+nicknama: サンプル太郎  
 
-Things you may want to cover:
+【アプリ概要】
+* 都内４箇所の寄席の出演者情報を表示する  
+* 新規登録にてアカウントを作成すると番組表にいいねが押せてマイページで一覧を表示できる  
 
-* Ruby version
+# Description
+私が考えた寄席演芸の世界での下記の問題点を解消したアプリです  
+* 都内の各寄席は個々での運営のため情報のアクセスが各寄席のHPアクセスするという手間があった
+* 最新情報を知るには、各寄席のアカウントもチェックしなければいけない
 
-* System dependencies
+以上の問題点を解消するため下記の機能を持つアプリを作りました  
+* 一度アクセスすれば各寄席の出演者情報を閲覧できる
+* 寄席の出演者情報以外に当日の代演や休演情報を知るためのTwitter情報も同じページで確認できる
+* ユーザーログインをすれば、好きな番組や、自分が行った番組にいいねを押してマイページで管理ができる
+* 管理者権限を付け、管理者はアプリ上で番組表の投稿や編集削除ができる
 
-* Configuration
+# DEMO
+<a href="https://gyazo.com/1bc16588349ae255b5fff486b927a9f8"><img src="https://i.gyazo.com/1bc16588349ae255b5fff486b927a9f8.gif" alt="Image from Gyazo" width="1000"/></a>
 
-* Database creation
+# Requirement
+開 発 環 境：Ruby/Ruby on Rails/MySQL/Github/Visual Studio Code/html&Scss  
+* ruby 2.6.5
+* mysql2
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# 実装した機能
 
 ## Usersテーブル
 | Colum              | Type   | Options                   |
