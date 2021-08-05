@@ -18,4 +18,6 @@ class EventComedianForm
     end
   end
 
+  #def update(comedians)
+  #end
 end

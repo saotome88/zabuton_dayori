@@ -19,10 +19,17 @@
                   <% end %>
                 <% end %> <!-- 芸名表示のeachメソッド終わり -->
                 <!-- いいねボタン表示 -->
-                <% if current_user.already_reaction_liked?(event) %>
-                  <%= button_to 'いいね削除', event_reaction_like_path(event, current_user), method: :delete %>
-                <% else %>
-                  <%= button_to 'いいね', event_reaction_likes_path(event), method: :post %>
+                <% if user_signed_in? %>
+                  <% if current_user.already_reaction_liked?(event) %>
+                   <%= button_to 'いいね削除', event_reaction_like_path(event, current_user), method: :delete %>
+                  <% else %>
+                   <%= button_to 'いいね', event_reaction_likes_path(event), method: :post %>
+                  <% end %>
+                  <!-- 管理者のみ編集・削除ボタン -->
+                  <% if current_user.admin == true %>
+                    <%= button_to '編集', edit_admin_event_path(event), method: :get %>
+                    <%= button_to '削除', admin_event_path(event), method: :delete %>
+                  <% end %>
                 <% end %>
               <% end %> <!-- 昼席のif指定終わり -->
             <% end %> <!-- eventsのeachメソッド終わり -->
@@ -51,12 +58,14 @@
                   <% end %>
                 <% end %> <!-- 芸名表示のeachメソッド終わり -->
                 <!-- いいねボタン表示 -->
+                <% if user_signed_in? %>
                   <% if current_user.already_reaction_liked?(event) %>
                     <%= button_to 'いいね削除', event_reaction_like_path(event, current_user), method: :delete %>
                   <% else %>
                     <%= button_to 'いいね', event_reaction_likes_path(event), method: :post %>
                   <% end %>
-                <% end %> <!-- 夜席のif指定終わり -->
+                <% end %>
+              <% end %> <!-- 夜席のif指定終わり -->
             <% end %> <!-- eventsのeachメソッド終わり -->
         </div>
     </div>

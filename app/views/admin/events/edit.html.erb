@@ -1,0 +1,82 @@
+<div class="event_post">
+  <h2 class="post-title">編集ページ</h2>
+  <%= form_with model: @event, url: admin_event_path(@event.id), local: true do |f| %>
+
+    <%# エラーメッセージの表示%> 
+    <%# f.objectで部分テンプレートに@eventを渡す %>
+
+    <%# 番組表の概要 %>
+    <div class="events-detail">
+      <div class="form">
+        <div class="weight-bold-text">
+          演芸場の選択
+        </div>
+        <%= f.collection_select(:theater_id, Theater.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+        <div class="weight-bold-text">
+          日付の入力
+        </div>
+        <%# 日付の保存%>
+        <%= f.date_select(:start_time) %>
+      </div>
+        <div class="weight-bold-text">
+          昼席・夜席の選択
+        </div>
+        <%= f.collection_select(:daynight_id, Daynight.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+    </div>
+    <%# /番組表の概要 %>
+   <%# 出演者について %>
+    <div class="items-detail">
+      <div class="form">
+        <div class="weight-bold-text">
+          <span>出演者の選択</span><br>
+          <span>1人目</span>
+        </div>
+        <%# 芸人名を特定する:comedian_idカラムは、中間テーブルのEvent_Comediansに保存をする %>
+        <%= f.collection_select(:comedian_ids, Comedian.all, :id, :name, {}, {name: 'event_comedian_form[comedian_ids][]', class:"select-box", id:"item-category"}) %>
+
+        <%# 以下、二人目の実装 %>
+        <div class="weight-bold-text">
+          <span>2人目</span>
+        </div>
+        <%# 芸人名を特定する:comedian_idカラムは、中間テーブルのEvent_Comediansに保存をする %>
+        <%= f.collection_select(:comedian_ids, Comedian.all, :id, :name, {}, {name: 'event_comedian_form[comedian_ids][]', class:"select-box", id:"item-category"}) %>
+        
+        <div class="weight-bold-text">
+          <span>3人目</span>
+        </div>
+        <%# 芸人名を特定する:comedian_idカラムは、中間テーブルのEvent_Comediansに保存をする %>
+        <%= f.collection_select(:comedian_ids, Comedian.all, :id, :name, {}, {name: 'event_comedian_form[comedian_ids][]', class:"select-box", id:"item-category"}) %>
+
+        <div class="weight-bold-text">
+          <span>4人目</span>
+        </div>
+        <%# 芸人名を特定する:comedian_idカラムは、中間テーブルのEvent_Comediansに保存をする %>
+        <%= f.collection_select(:comedian_ids, Comedian.all, :id, :name, {}, {name: 'event_comedian_form[comedian_ids][]', class:"select-box", id:"item-category"}) %>
+
+        <div class="weight-bold-text">
+          <span>5人目</span>
+        </div>
+        <%# 芸人名を特定する:comedian_idカラムは、中間テーブルのEvent_Comediansに保存をする %>
+        <%= f.collection_select(:comedian_ids, Comedian.all, :id, :name, {}, {name: 'event_comedian_form[comedian_ids][]', class:"select-box", id:"item-category"}) %>
+
+        <div class="weight-bold-text">
+          <span>6人目</span>
+        </div>
+        <%# 芸人名を特定する:comedian_idカラムは、中間テーブルのEvent_Comediansに保存をする %>
+        <%= f.collection_select(:comedian_ids, Comedian.all, :id, :name, {}, {name: 'event_comedian_form[comedian_ids][]', class:"select-box", id:"item-category"}) %>
+
+        <div class="weight-bold-text">
+          <span>7人目</span>
+        </div>
+        <%# 芸人名を特定する:comedian_idカラムは、中間テーブルのEvent_Comediansに保存をする %>
+        <%= f.collection_select(:comedian_ids, Comedian.all, :id, :name, {}, {name: 'event_comedian_form[comedian_ids][]', class:"select-box", id:"item-category"}) %>
+    </div>
+
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "変更する", class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  <% end %>
+</div>

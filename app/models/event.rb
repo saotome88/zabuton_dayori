@@ -1,8 +1,10 @@
 class Event < ApplicationRecord
+  include ActiveHash::Associations
   extend ActiveHash::Associations::ActiveRecordExtensions
   has_many :users, through: :reaction_likes
-  has_many :event_comedians
+  has_many :event_comedians, dependent: :destroy
   has_many :comedians, through: :event_comedians
+
   belongs_to :theater
   belongs_to :daynight
 
