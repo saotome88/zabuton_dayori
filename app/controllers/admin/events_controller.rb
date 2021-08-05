@@ -19,10 +19,26 @@ class Admin::EventsController < ApplicationController
     end
   end
 
-#  def destroy
-#    event = EventComedianForm.find(params[:id])
-#    event.destroy
-#  end
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  #def update
+  #  @event = EventComedianForm.new(event_update_params)
+  #  comedians = params[:event_comedian_form][:comedian_ids]
+  #  binding.pry
+  #  if @event.valid?
+  #    @event.update(comedians)
+  #    redirect_to event_path(event.id)
+  #  else
+  #    render 'edit'
+  #  end
+  #end
+#
+  #def destroy
+  #  event = EventComedianForm.find(params[:id])
+  #  event.destroy
+  #end
 
   private
   def if_not_admin
@@ -43,5 +59,9 @@ class Admin::EventsController < ApplicationController
 
   def event_params
     params.require(:event_comedian_form).permit(:theater_id, :start_time, :daynight_id, comedian_ids: [])
+  end
+
+  def event_update_params
+    params.require(:event_comedian_form).permit(:theater_id, :start_time, :daynight_id, comedian_ids: []).merge(event_id: params[:id])
   end
 end
