@@ -3,6 +3,7 @@
 <a href="https://zabuton-dayori.herokuapp.com/" alt="zabuton_dayori"></a>
 
 * テストアカウント
+    
 e-mail: test@test.com  
 password: 1234asdf  
 nicknama: サンプル太郎  
@@ -30,10 +31,11 @@ nicknama: サンプル太郎
 
 # 実装した機能
 * ユーザーログイン機能
-* Bootstrapによるレスポンシブデザイン
 ![スクリーンショット 2021-08-06 1 29 28](https://user-images.githubusercontent.com/80328215/128386832-7b2b7957-4464-49f0-a196-acd4eb3ad56b.png)
 ![スクリーンショット 2021-08-06 1 29 45](https://user-images.githubusercontent.com/80328215/128386835-255f647b-7062-4342-8fb7-4e02d5e9b126.png)
 ![スクリーンショット 2021-08-06 1 30 00](https://user-images.githubusercontent.com/80328215/128386838-26b404d1-0925-4f0a-acfa-fb2447b211a0.png)
+  
+* Bootstrapによるレスポンシブデザイン  
 ![スクリーンショット 2021-08-06 1 31 29](https://user-images.githubusercontent.com/80328215/128387082-051c0605-e9c9-467f-a068-5645f330e53e.png)
   
 * 管理者の投稿機能
@@ -42,6 +44,7 @@ nicknama: サンプル太郎
   
 * タブの切り替え表示機能
 * いいね機能
+  
 ![スクリーンショット 2021-08-06 1 34 30](https://user-images.githubusercontent.com/80328215/128387544-792dbe87-ab2c-4548-bcba-a19db9518997.png)
 
 * カレンダー表示と日付選択機能
