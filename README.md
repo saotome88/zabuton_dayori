@@ -27,11 +27,53 @@ nicknama: サンプル太郎
 
 # Requirement
 開 発 環 境：Ruby/Ruby on Rails/MySQL/Github/Visual Studio Code/html&Scss  
-* ruby 2.6.5
-* mysql2
 
 # 実装した機能
+* ユーザーログイン機能
+* Bootstrapによるレスポンシブデザイン
+![スクリーンショット 2021-08-06 1 29 28](https://user-images.githubusercontent.com/80328215/128386832-7b2b7957-4464-49f0-a196-acd4eb3ad56b.png)
+![スクリーンショット 2021-08-06 1 29 45](https://user-images.githubusercontent.com/80328215/128386835-255f647b-7062-4342-8fb7-4e02d5e9b126.png)
+![スクリーンショット 2021-08-06 1 30 00](https://user-images.githubusercontent.com/80328215/128386838-26b404d1-0925-4f0a-acfa-fb2447b211a0.png)
+![スクリーンショット 2021-08-06 1 31 29](https://user-images.githubusercontent.com/80328215/128387082-051c0605-e9c9-467f-a068-5645f330e53e.png)
+  
+* 管理者の投稿機能
+![スクリーンショット 2021-08-06 1 33 25](https://user-images.githubusercontent.com/80328215/128387328-a66746a8-e85b-411a-8be6-ebef36c8c884.png)
+![スクリーンショット 2021-08-06 1 33 40](https://user-images.githubusercontent.com/80328215/128387331-c8db612a-d120-4417-a21a-752a3d97e167.png)
+  
+* タブの切り替え表示機能
+* いいね機能
+![スクリーンショット 2021-08-06 1 34 30](https://user-images.githubusercontent.com/80328215/128387544-792dbe87-ab2c-4548-bcba-a19db9518997.png)
 
+* カレンダー表示と日付選択機能
+* GoogleMap API実装
+* Twitter表示機能
+![スクリーンショット 2021-08-06 1 35 21](https://user-images.githubusercontent.com/80328215/128387576-3b346de6-0551-46f2-8543-b1925802254c.png)
+  
+
+# これから実装する機能
+* 管理者の投稿編集と削除機能
+* マイページのメモ機能
+* SNSログイン機能
+* 非同期通信によるいいね機能
+* 非同期通信によるカレンダー日付選択機能
+
+
+# データベース設計
+<img width="703" alt="スクリーンショット 2021-08-06 1 18 32" src="https://user-images.githubusercontent.com/80328215/128385231-6bc1c11c-2ff1-44e5-b204-2c22eab4c9c6.png">
+
+# ローカルでの動作方法
+* ruby 2.6.5
+* Rails 6.0.4
+* mysql2
+  
+【設定手順】  
+- gh repo clone saotome88/zabuton_dayori
+- bundle install
+- rails db:create
+- rails db:migrate
+  
+  
+  
 ## Usersテーブル
 | Colum              | Type   | Options                   |
 |--------------------|--------|---------------------------|
