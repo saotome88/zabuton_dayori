@@ -1,6 +1,6 @@
 <div class="event_post">
   <h2 class="post-title">編集ページ</h2>
-  <%= form_with model: @event, url: admin_event_path(@event.id), local: true do |f| %>
+  <%= form_with model: @event, url: admin_event_path, local: true do |f| %>
 
     <%# エラーメッセージの表示%> 
     <%# f.objectで部分テンプレートに@eventを渡す %>
@@ -24,7 +24,7 @@
         <%= f.collection_select(:daynight_id, Daynight.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
     </div>
     <%# /番組表の概要 %>
-   <%# 出演者について %>
+    <%# 出演者について %>
     <div class="items-detail">
       <div class="form">
         <div class="weight-bold-text">

@@ -18,6 +18,12 @@ class EventComedianForm
     end
   end
 
-  #def update(comedians)
-  #end
+#  def update(comedians)
+#    event = Event.update(theater_id: theater_id, daynight_id: daynight_id, start_time: start_time)
+#    i = 0
+#    comedians.each do |comedians|
+#      EventComedian.update(event_id: event.id, comedian_id: comedian_ids[i])
+#      i += 1
+#    end
+#  end
 end
