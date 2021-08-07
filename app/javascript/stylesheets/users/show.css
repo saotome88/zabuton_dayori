@@ -1,0 +1,29 @@
+/* 番組表 */
+/* 芸名表示は縦書きの右寄りにする */
+table .comedians {
+  background-image: url('..assets/images/washi.png');
+}
+
+.table-title {
+  margin-left: 10px;
+}
+
+/* 番組表の中身 */
+.comedians {
+  -webkit-writing-mode: vertical-rl;
+  -moz-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  -ms-writing-mode: vertical-rl;
+  writing-mode: vertical-rl;
+  display: inline-block;
+  overflow: scroll;
+}
+
+.comedians p{
+ font-size: 18px;
+ line-height: 10px;
+}
+
+.comedians p {
+  padding-right: 20px;
+}
