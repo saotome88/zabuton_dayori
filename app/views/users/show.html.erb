@@ -1,59 +1,100 @@
-<h3 class="nickname"><%= @user.nickname %>のMyPage</h3>
-<div class="header">
-<%= link_to 'トップページへ(仮)', root_path %>
-</div>
+<div class="user_show col-10">
+  <br>
+  <h3 class="nickname m-auto"><%= @user.nickname %>のマイページ</h3>
+  <div class="header m-suto">
+    <%= link_to 'トップページへ', root_path %>
+  </div>
+  <br>
+  <br>
 
-<table class="detail-table">
-  <tbody>
-    <tr>
-      <th class="detail-reaction">いいね！(仮)</th>
-      <td class="detail-value">
-            2021年6月10日<br>
-            <b>新宿末廣亭 昼席</b><br>
-            一.春風亭　昇吾<br>
-            一.柳亭　　小痴楽<br>
-            一.三笑亭　小夢<br>
-            一.滝川　　鯉橋<br>
-            一.ポ　ロ　ン<br>
-            一.桂　　　小文治<br>
-            一.ねづっち<br>
-            一.古今亭　寿輔<br>
-            　お　中　入　り<br>
-            一.桂　　　鷹治<br>
-            一.味千代<br>
-            一.笑福亭　福笑<br>
-            一.柳家　　蝉丸<br>
-            一.D51<br>
-            <b>一.桂　　　文治</b>
-      </td>
-      <td class="detail-memo">
-        <%# メモのフォームを作成 %>
-        <%# いいね機能を作成後に@reaction_likesと@memoのform_withを作成する %>
-        <%= form_for(@memo) do |f| %>
-          <%= f.text_field :text %>
-          <%= f.submit "メモを送信" %>
-        <% end %>
-      </td>
-    </tr>
-    <tr>
-      <th class="detail-reaction">いいね！(仮)</th>
-      <td class="detail-value">番組表の表示</td>
-      <td class="detail-memo">メモを書く</td>
-    </tr>
-    <tr>
-      <th class="detail-reaction">いいね！(仮)</th>
-      <td class="detail-value">番組表の表示</td>
-      <td class="detail-memo">メモを書く</td>
-    </tr>
-    <tr>
-      <th class="detail-reaction">いいね！(仮)</th>
-      <td class="detail-value">番組表の表示</td>
-      <td class="detail-memo">メモを書く</td>
-    </tr>
-    <tr>
-      <th class="detail-reaction">いいね！(仮)</th>
-      <td class="detail-value">番組表の表示</td>
-      <td class="detail-memo">メモを書く</td>
-    </tr>
-  </tbody>
-</table>
+  <table class="tabel table-striped table-bordered">
+    <thead class="thead-light col-12">
+      <tr class="table-title">
+        <th scope="col">リアクション</th>
+        <th scope="col">日付</th>
+        <th scope="col">場所</th>
+        <th scope="col">昼夜</th>
+        <th scope="col">出演者</th>
+        <th scope="col">メモ</th>
+      </tr>
+    </thead>
+
+      <tbody>
+        <tr>
+          <th scope="row">いいね！</th>
+          <td class="day">2021年8月1日</td>
+          <td class="theater">新宿末廣亭</td>
+          <td class="daynight">昼席</td>
+          <td class="comedians ml-auto">
+              <p>一.春風亭　昇吾</p>
+              <p>一.柳亭　　小痴楽</p>
+              <p>一.三笑亭　小夢</p>
+              <p>一.滝川　　鯉橋</p>
+              <p>一.ポ　ロ　ン</p>
+              <p>一.桂　　　小文治</p>
+              <p>一.ねづっち</p>
+              <p>一.古今亭　寿輔</p>
+              <p>一.桂　　　鷹治</p>
+              <p>一.味千代</p>
+              <p>一.笑福亭　福笑</p>
+              <p>一.柳家　　蝉丸</p>
+              <p>一.桂　　　文治</p>
+          </td>
+          <td class="memo">
+            <%# メモのフォームを作成 %>
+            <%# いいね機能を作成後に@reaction_likesと@memoのform_withを作成する %>
+            <%= form_for(@memo) do |f| %>
+              <%= f.text_field :text, class:"form-control" %>
+              <%= f.submit "メモを送信", class:"mt-2" %>
+            <% end %>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">行ってきた！</th>
+                  <td class="day">2021年8月1日</td>
+          <td class="theater">新宿末廣亭</td>
+          <td class="daynight">昼席</td>
+          <td class="comedians ml-auto">
+              <p>一.春風亭　昇吾</p>
+              <p>一.柳亭　　小痴楽</p>
+              <p>一.三笑亭　小夢</p>
+              <p>一.滝川　　鯉橋</p>
+              <p>一.ポ　ロ　ン</p>
+              <p>一.桂　　　小文治</p>
+              <p>一.ねづっち</p>
+          </td>
+          <td class="memo">
+            <%# メモのフォームを作成 %>
+            <%# いいね機能を作成後に@reaction_likesと@memoのform_withを作成する %>
+            <%= form_for(@memo) do |f| %>
+              <%= f.text_field :text, class:"form-control" %>
+              <%= f.submit "メモを送信", class:"mt-2" %>
+            <% end %>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">チェック！</th>
+                  <td class="day">2021年8月1日</td>
+          <td class="theater">新宿末廣亭</td>
+          <td class="daynight">昼席</td>
+          <td class="comedians ml-auto">
+              <p>一.春風亭　昇吾</p>
+              <p>一.柳亭　　小痴楽</p>
+              <p>一.三笑亭　小夢</p>
+              <p>一.柳家　　蝉丸</p>
+              <p>一.桂　　　文治</p>
+          </td>
+          <td class="memo">
+            <%# メモのフォームを作成 %>
+            <%# いいね機能を作成後に@reaction_likesと@memoのform_withを作成する %>
+            <%= form_for(@memo) do |f| %>
+              <%= f.text_field :text, class:"form-control" %>
+              <%= f.submit "メモを送信", class:"mt-2" %>
+            <% end %>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+</div>
