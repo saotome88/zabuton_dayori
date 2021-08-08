@@ -1,6 +1,6 @@
 # Name
-さぶとんだより
-<a href="https://zabuton-dayori.herokuapp.com/" alt="zabuton_dayori"></a>
+「さぶとんだより」
+https://zabuton-dayori.herokuapp.com/
 
 * テストアカウント
     
