@@ -99,22 +99,22 @@
   <div class="tab-content row flex-nowrap ml-3 mr-3">
     <!-- *** 新宿末廣亭 *** -->
     <div id="shinjuku" class="tab-pane active col-12">
-      <%= render partial: "shinjuku_show", locals: { shows: @shows, selectday: @show, events: @events} %>
+      <%= render partial: "shinjuku_show", locals: { shows: @shows, selectday: @show.start_time, events: @events} %>
     </div>
 
     <!-- *** 池袋演芸場 *** -->
     <div id="ikebukuro" class="tab-pane col-12">
-      <%= render partial: "ikebukuro_show", locals: { shows: @shows, selectday: @show } %>
+      <%= render partial: "ikebukuro_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
     </div>
 
     <!-- *** 浅草演芸ホール *** -->
     <div id="asakusa" class="tab-pane col-12">
-      <%= render partial: "asakusa_show", locals: { shows: @shows, selectday: @show } %>
+      <%= render partial: "asakusa_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
     </div>
 
     <!-- *** 上野広小路亭 *** -->
     <div id="ueno" class="tab-pane col-12">
-      <%= render partial: "ueno_show", locals: { shows: @shows, selectday: @show } %>
+      <%= render partial: "ueno_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
     </div>
   </div><%# タブの中身の終了 %>
 
