@@ -1,5 +1,6 @@
 # Name
 「さぶとんだより」
+  
 https://zabuton-dayori.herokuapp.com/
 
 * テストアカウント
@@ -24,7 +25,11 @@ nicknama: サンプル太郎
 * 管理者権限を付け、管理者はアプリ上で番組表の投稿や編集削除ができる
 
 # DEMO
-<a href="https://gyazo.com/1bc16588349ae255b5fff486b927a9f8"><img src="https://i.gyazo.com/1bc16588349ae255b5fff486b927a9f8.gif" alt="Image from Gyazo" width="1000"/></a>
+
+
+https://user-images.githubusercontent.com/80328215/128703926-d3bfdff3-9a5c-4ca5-a976-9345d0d08356.mp4
+
+
 
 # Requirement
 開 発 環 境：Ruby/Ruby on Rails/MySQL/Github/Visual Studio Code/html&Scss  
