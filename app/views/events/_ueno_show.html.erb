@@ -3,7 +3,7 @@
     <div class="card-body text-box">
         <div class="card-text comedians">
             <% shows.each do |event| %>
-              <% if (event.start_time == selectday.start_time) && (event.theater_id == 4) && (event.daynight_id == 1) %>
+              <% if (event.start_time == selectday) && (event.theater_id == 4) && (event.daynight_id == 1) %>
                <p class="yose-title"><%= event.theater.name %></p>
                 <p class="yose-title"><%= event.daynight.name %>席</p>
                 <%# 出演者の名前 %>
@@ -41,7 +41,7 @@
     <div class="card-body text-box">
         <div class="card-text comedians">
             <% shows.each do |event| %>
-              <% if (event.start_time == selectday.start_time) && (event.theater_id == 4) && (event.daynight_id == 2) %>
+              <% if (event.start_time == selectday) && (event.theater_id == 4) && (event.daynight_id == 2) %>
                 <p class="yose-title"><%= event.theater.name %></p>
                 <p class="yose-title"><%= event.daynight.name %>席</p>
                 <%# 出演者の名前 %>
