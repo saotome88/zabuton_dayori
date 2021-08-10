@@ -22,19 +22,19 @@ class Admin::EventsController < ApplicationController
   def edit
     @event = Event.find(params[:id])
   end
-
-  #def update
-  #  @event = EventComedianForm.new(event_update_params)
-  #  comedians = params[:event_comedian_form][:comedian_ids]
-  #  binding.pry
-  #  if @event.valid?
-  #    @event.update(comedians)
-  #    redirect_to event_path(event.id)
-  #  else
-  #    render 'edit'
-  #  end
-  #end
 #
+#  def update
+#    @event = Event.find(params[:id])
+#    comedians = params[:event_comedian_form][:comedian_ids]
+#    binding.pry
+#    if @event.valid?
+#      @event.update(comedians)
+#      redirect_to event_path(event.id)
+#    else
+#    render 'edit'
+#    end
+#  end
+
   #def destroy
   #  event = EventComedianForm.find(params[:id])
   #  event.destroy
@@ -62,6 +62,6 @@ class Admin::EventsController < ApplicationController
   end
 
   def event_update_params
-    params.require(:event_comedian_form).permit(:theater_id, :start_time, :daynight_id, comedian_ids: []).merge(event_id: params[:id])
+    params.require(:event_comedian_form).permit(:theater_id, :start_time, :daynight_id, comedian_ids: [], event_id: params[:id])
   end
 end

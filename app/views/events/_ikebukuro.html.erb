@@ -1,12 +1,11 @@
 <!-- 昼席の表示 -->
-<div class="card yose-hiru bg-50-white">
+<div class="card col-12 yose-hiru">
     <div class="card-body text-box">
-        <div class="card-text comedians text-dark">
+        <div class="card-text comedians">
             <% events.each do |event| %>
               <% if (event.start_time == Date.today) && (event.theater_id == 2) && (event.daynight_id == 1) %>
-                <p><%= event.start_time %></p>
-                <p><%= event.theater.name %></p>
-                <p><%= event.daynight.name %>席</p>
+                <p class="yose-title"><%= event.theater.name %></p>
+                <p class="yose-title"><%= event.daynight.name %>席</p>
                 <%# 出演者の名前 %>
                 <% event.event_comedians.each do |event_comedian| %>
                   <% if event_comedian.comedian_id != 0 %>
@@ -17,27 +16,34 @@
                       </p>
                     </div>
                   <% end %>
-                <% end %>
-                  <!-- いいねボタン表示 -->
-                  <% if user_signed_in? %>
-                    <%= button_to 'いいね', event_reaction_likes_path(event), method: :post %>
-                    <%#= button_to 'いいね削除', event_reaction_like_path(event), method: :delete %>
+                <% end %> <!-- 芸名表示のeachメソッド終わり -->
+                <!-- いいねボタン表示 -->
+                <% if user_signed_in? %>
+                  <% if current_user.already_reaction_liked?(event) %>
+                   <%= button_to 'いいね削除', event_reaction_like_path(event, current_user), method: :delete, class:"mr-1" %>
+                  <% else %>
+                   <%= button_to 'いいね', event_reaction_likes_path(event), method: :post, class:"mr-1" %>
                   <% end %>
-              <% end %>
-            <% end %>
+                  <!-- 管理者のみ編集・削除ボタン -->
+                  <% if current_user.admin == true %>
+                    <%= button_to '編集', edit_admin_event_path(event), method: :get, class:"mr-1" %>
+                    <%= button_to '削除', admin_event_path(event), method: :delete, class:"mr-1" %>
+                  <% end %>
+                <% end %>
+              <% end %> <!-- 昼席のif指定終わり -->
+            <% end %> <!-- eventsのeachメソッド終わり -->
         </div>
     </div>
 </div>
 
 <!-- 夜席の表示 -->
-<div class="card yose-yoru bg-50-white">
+<div class="card col-12 yose-yoru">
     <div class="card-body text-box">
-        <div class="card-text comedians text-dark">
+        <div class="card-text comedians">
             <% events.each do |event| %>
               <% if (event.start_time == Date.today) && (event.theater_id == 2) && (event.daynight_id == 2) %>
-                <p><%= event.start_time %></p>
-                <p><%= event.theater.name %></p>
-                <p><%= event.daynight.name %>席</p>
+                <p class="yose-title"><%= event.theater.name %></p>
+                <p class="yose-title"><%= event.daynight.name %>席</p>
                 <%# 出演者の名前 %>
                 <% event.event_comedians.each do |event_comedian| %>
                   <% if event_comedian.comedian_id != 0 %>
@@ -48,18 +54,25 @@
                       </p>
                     </div>
                   <% end %>
-                <% end %>
-                  <!-- いいねボタン表示 -->
-                  <% if user_signed_in? %>
-                    <%= button_to 'いいね', event_reaction_likes_path(event), method: :post %>
-                    <%#= button_to 'いいね削除', event_reaction_like_path(event), method: :delete %>
+                <% end %> <!-- 芸名表示のeachメソッド終わり -->
+               <!-- いいねボタン表示 -->
+                <% if user_signed_in? %>
+                  <% if current_user.already_reaction_liked?(event) %>
+                   <%= button_to 'いいね削除', event_reaction_like_path(event, current_user), method: :delete, class:"mr-1" %>
+                  <% else %>
+                   <%= button_to 'いいね', event_reaction_likes_path(event), method: :post, class:"mr-1" %>
                   <% end %>
-              <% end %>
-            <% end %>
+                  <!-- 管理者のみ編集・削除ボタン -->
+                  <% if current_user.admin == true %>
+                    <%= button_to '編集', edit_admin_event_path(event), method: :get, class:"mr-1" %>
+                    <%= button_to '削除', admin_event_path(event), method: :delete, class:"mr-1" %>
+                  <% end %>
+                <% end %>
+              <% end %> <!-- 夜席のif指定終わり -->
+            <% end %> <!-- eventsのeachメソッド終わり -->
         </div>
     </div>
 </div>
-
 
 <div class="info col-12 ca-twitter">
   <!-- カレンダー -->
@@ -67,7 +80,7 @@
     <div class="card-body  order-md-1">
         <div class="card-text text-dark calendar-text">
             <%= month_calendar events: @events do |date, events| %>
-              <%= date.day %><br>
+              <p><%= date.day %></p>
               <% events.each do |event| %>
                 <% if event.daynight_id == 1 %>
                   <% daynight = "昼" %>
@@ -107,7 +120,8 @@
       <div class="card-body">
           <div class="card-text text-dark">
             <div class="twitter-in order-md-2">
-               <a href="https://twitter.com/intent/tweet?button_hashtag=池袋演芸場&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-lang="ja" data-height="1000px" data-theme="dark" data-show-count="false">Tweet #池袋演芸場</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+               <a href="https://twitter.com/intent/tweet?button_hashtag=池袋演芸場&ref_src=twsrc%5Etfw" class="twitter-hashtag-button" data-lang="ja" data-height="1000px" data-theme="dark" data-show-count="false">Tweet #池袋演芸場</a>
+               <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
           </div>
       </div>

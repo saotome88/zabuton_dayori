@@ -87,10 +87,14 @@ popover {
 
 /* カルーセル */
 .copy-img {
-  width: 50%;
   position : absolute;
-  bottom: 20px;
-  left: 50px;
+  width: 40%;
+  top: -10px;
+  left: 12%;
+}
+
+.yose-img {
+  width: 75%
 }
 
 /*-- 当日の日付表示 */
@@ -131,6 +135,8 @@ popover {
 .text-box {
   text-align: center;
 }
+
+/* 番組表の中身 */
 .comedians {
   -webkit-writing-mode: vertical-rl;
   -moz-writing-mode: vertical-rl;
@@ -140,6 +146,11 @@ popover {
   display: inline-block;
   height: 180px;
   overflow: scroll;
+}
+
+.comedians .yose-title{
+ font-size: 22px;
+ line-height: 10px;
 }
 
 .comedians .comedian-name {
@@ -164,6 +175,10 @@ popover {
   color: black;
 }
 
+.reaction-button {
+  margin-right: 1px;
+}
+
 /* info */
 .info {
   position: relative;
@@ -172,33 +187,37 @@ popover {
 
 /* calendar */
 .calendar {
-  height: 600px;
-  width: 50%;
+  height: 550px;
+  width: 45%;
   margin-top: 25px;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 10%;
 }
 
 .calendar-text p {
-  font-size: 14px;
+  font-size: 11px;
+  line-height: 1.5px;
 }
 
 /* MAP */
 .map-in {
-  height: 390px;
-  width: 50%;
+  height: 300px;
+  width: 45%;
   margin-top: 10px;
   position: absolute;
   top: 0;
-  left: 0;
+  left: 10%;
 }
 
 /* Twitter */
 .twitter {
-  width: 50%;
+  width: 40%;
   position: absolute;
-  top: -657px;
-  left: 50%;
+  top: -610px;
+  left: 55%;
 }
 
+.copy-rights {
+  margin-left: 125px;
+}

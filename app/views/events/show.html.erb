@@ -4,7 +4,7 @@
   <nav class="navbar navbar-expand-md bg-dark">
       <div class="d-inline-flex list-left">
         <a class="nevbar-brand logo-mini"><%= image_tag("logo_mini.jpg", class: "img-fluid", id: "navbar-logo") %></a>
-        <p class="text-white">寄席情報アプリ〜ざぶとんだより〜 <%= link_to "元のページへ戻る", root_path, class: "text-white" %></p>
+        <p class="text-white">ざぶとんだより〜寄席情報アプリ〜 <%= link_to "トップページへ戻る", root_path, class: "text-primary" %></p>
       </div>
       <button class="navbar-toggler btn-outline-white" type="button" data-toggle="collapse" data-target="#menu">
         <p class="m-auto text-white">MENU</p>
@@ -14,17 +14,20 @@
           <%# ログイン時の表示 %>
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to "#{current_user.nickname}さんはログイン中", user_path(current_user.id), class: "nav-link menu" %>
+              <%= link_to "#{current_user.nickname}さんはログイン中", user_path(current_user.id), class: "btn nav-link menu" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link menu" %>
+              <%= link_to "マイページへ", user_path(current_user.id), class: "btn btn-secondary nav-link menu" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-secondary nav-link menu" %>
             </li>
           <% else %>
             <li class="nav-item">
-              <%= link_to 'ログイン', new_user_session_path, class: "nav-link menu" %>
+              <%= link_to 'ログイン', new_user_session_path, class: "btn btn-secondary nav-link menu" %>
             </li>
             <li class="nav-item">
-              <%= link_to '新規登録', new_user_registration_path, class: "nav-link menu" %>
+              <%= link_to '新規登録', new_user_registration_path, class: "btn btn-secondary nav-link menu" %>
             </li>
           <% end %>
         </ul>
@@ -43,23 +46,25 @@
               <li data-target="#photo" data-slide-to="2"></li>
               <li data-target="#photo" data-slide-to="3"></li>
           </ol>
-          <div class="carousel-innner">
-              <div class="carousel-item active">
-                  <%= image_tag("yose_01.jpg", class: "d-block img-fluid m-auto w-70") %>
-              </div> 
-              <div class="carousel-item">
-                  <%= image_tag("yose_02.jpg", class: "d-block img-fluid m-auto w-70") %>
-              </div>
-              <div class="carousel-item">
-                  <%= image_tag("yose_03.jpg", class: "d-block img-fluid m-auto w-70") %>
-              </div>
-              <div class="carousel-item">
-                  <%= image_tag("yose_04.jpg", class: "d-block img-fluid m-auto w-70") %>
-              </div> 
+          <div class="yose-slide">
+            <div class="carousel-innner">
+                <div class="carousel-item active">
+                    <%= image_tag("yose_01.jpg", class: "d-block img-fluid m-auto yose-img") %>
+                </div> 
+                <div class="carousel-item">
+                    <%= image_tag("yose_02.jpg", class: "d-block img-fluid m-auto yose-img") %>
+                </div>
+                <div class="carousel-item">
+                    <%= image_tag("yose_03.jpg", class: "d-block img-fluid m-auto yose-img") %>
+                </div>
+                <div class="carousel-item">
+                    <%= image_tag("yose_04.jpg", class: "d-block img-fluid m-auto yose-img") %>
+                </div> 
+            </div>
+            <div class="card-img-overlay">
+              <%= image_tag("copy3.png", class: "card-body pt-5 img-fluid copy-img") %>
+            </div>
           </div>
-      </div>
-      <div class="card-img-overlay">
-        <%= image_tag("copy2.png", class: "card-body img-fluid copy-img") %>
       </div>
   </div>
   <br>
@@ -90,26 +95,26 @@
       </ul>
   </div>
 
-  <!-- *** タブの中身-選択した日付@showのデータを表示させる *** -->
+  <!-- *** タブの中身-選択した日付@showのデータを表示させる-カレンダーのために@eventsも渡す *** -->
   <div class="tab-content row flex-nowrap ml-3 mr-3">
     <!-- *** 新宿末廣亭 *** -->
     <div id="shinjuku" class="tab-pane active col-12">
-      <%= render partial: "shinjuku_show", locals: { shows: @shows, selectday: @show, events: @events} %>
+      <%= render partial: "shinjuku_show", locals: { shows: @shows, selectday: @show.start_time, events: @events} %>
     </div>
 
     <!-- *** 池袋演芸場 *** -->
     <div id="ikebukuro" class="tab-pane col-12">
-      <%= render partial: "ikebukuro_show", locals: { shows: @shows, selectday: @show } %>
+      <%= render partial: "ikebukuro_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
     </div>
 
     <!-- *** 浅草演芸ホール *** -->
     <div id="asakusa" class="tab-pane col-12">
-      <%= render partial: "asakusa_show", locals: { shows: @shows, selectday: @show } %>
+      <%= render partial: "asakusa_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
     </div>
 
     <!-- *** 上野広小路亭 *** -->
     <div id="ueno" class="tab-pane col-12">
-      <%= render partial: "ueno_show", locals: { shows: @shows, selectday: @show } %>
+      <%= render partial: "ueno_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
     </div>
   </div><%# タブの中身の終了 %>
 
@@ -124,10 +129,19 @@
                   <a class="nav-link dropdown-toggle bg-dark text-white" data-toggle="dropdown" href="#">管理者 専用</a>
                   <div class="dropdown-menu bg-dark">
                       <%= link_to "管理者用:投稿ページ", new_admin_event_path, class: "dropdown-item text-white" %>
-                      <%= link_to "管理者:ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item text-white" %>
                   </div>
               </li>
           </ul>
       </div>
     <% end %>
 </div>  <%# containerの終了 %>
+
+<div class="footer">
+    <nav class="navbar navbar-expand-md bg-dark">
+      <div class="d-inline-flex list-left">
+        <p class="text-white copy-rights">
+          ©︎ 2021 Zabuton-dayori.ALL Rights Rserved.
+        </p>
+      </div>
+    </nav>
+</div>
