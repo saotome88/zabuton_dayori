@@ -7,8 +7,8 @@ class EventsController < ApplicationController
   def show
     @events = Event.all
     @show = Event.find(params[:id])
-    # 昼席と夜席の二つのデータを取得する
-    @shows = Event.where(start_time: @show.start_time, theater_id: @show.theater_id)
+    # 対象の日付の全ての演芸場のデータを取得する
+    @shows = Event.where(start_time: @show.start_time)
     @reaction_like = ReactionLike.new
   end
 end
