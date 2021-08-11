@@ -6,6 +6,10 @@
   </div>
   <br>
   <br>
+  <%# データ出力確認用。あとで削除する %>
+   <%= @events.each do |like_event| %>
+   <%= like_event.star_time %>
+   <% end %>
 
   <table class="tabel table-striped table-bordered">
     <thead class="thead-light col-12">
