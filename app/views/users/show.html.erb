@@ -7,8 +7,9 @@
   <br>
   <br>
   <%# データ出力確認用。あとで削除する %>
-   <%= @events.each do |like_event| %>
-   <%= like_event.star_time %>
+   <% current_user.reaction_liked_events.each do |event| %>
+   <%= event.start_time %>
+   <%= event.daynight.name%><br>
    <% end %>
 
   <table class="tabel table-striped table-bordered">
