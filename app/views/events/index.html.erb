@@ -1,40 +1,3 @@
-<!-- タイトル -->
-<div class="header">
-  <!-- *** ナビゲーションバー *** -->
-  <nav class="navbar navbar-expand-md bg-dark">
-      <div class="d-inline-flex list-left">
-        <a class="nevbar-brand logo-mini"><%= image_tag("logo_mini.jpg", class: "img-fluid", id: "navbar-logo") %></a>
-        <p class="text-white">ざぶとんだより〜寄席情報アプリ〜</p>
-      </div>
-      <button class="navbar-toggler btn-outline-white" type="button" data-toggle="collapse" data-target="#menu">
-        <p class="m-auto text-white">MENU</p>
-      </button>
-      <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav ml-auto bg-dark">
-          <%# ログイン時の表示 %>
-          <% if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "#{current_user.nickname}さんはログイン中", user_path(current_user.id), class: "btn nav-link menu" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "マイページへ", user_path(current_user.id), class: "btn btn-secondary nav-link menu" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "btn btn-secondary nav-link menu" %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <%= link_to 'ログイン', new_user_session_path, class: "btn btn-secondary nav-link menu" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to '新規登録', new_user_registration_path, class: "btn btn-secondary nav-link menu" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-  </nav>
-</div>
-
 <!-- 以下がコンテナクラスに入る -->
 <div class="container-fluid">
    <!-- *** スライド写真とコピー *** -->
@@ -118,7 +81,6 @@
   </div><%# タブの中身の終了 %>
 
 <br>
-<br>
     <%# 管理者ログインは最下部 %>
     <!-- *** フッター,管理者パス *** -->
     <% if user_signed_in? && current_user.admin? %>
@@ -134,13 +96,3 @@
       </div>
     <% end %>
 </div>  <%# containerの終了 %>
-
-<div class="footer">
-    <nav class="navbar navbar-expand-md bg-dark">
-      <div class="d-inline-flex list-left">
-        <p class="text-white copy-rights">
-          ©︎ 2021 Zabuton-dayori.ALL Rights Rserved.
-        </p>
-      </div>
-    </nav>
-</div>
