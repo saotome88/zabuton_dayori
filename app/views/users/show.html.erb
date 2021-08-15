@@ -31,12 +31,12 @@
                 <% event.event_comedians.each do |event_comedian| %>
                   <td class="comedians ml-auto">
                       <% if event_comedian.comedian_id != 0 %>
-                        <div class="wood">
+                        <%#<div class="wood">
                           <%= image_tag("wood.jpg", class: "img-fluid") %>
-                          <p class="comedian-name">
-                            一．<%= event_comedian.comedian.name %>
-                          </p>
-                        </div>
+                          <%#<p class="comedian-name">%>
+                            一．<%= event_comedian.comedian.name %><br>
+                          <%#</p>%>
+                        <%#</div>%>
                       <% end %>
                   </td>
                 <% end %> <!-- 芸名表示のeachメソッド終わり -->
