@@ -10,9 +10,13 @@ class Admin::EventsController < ApplicationController
 
   def create
     @event = EventComedianForm.new(event_params)
+    # 複数日付登録用の変数start_timesを作成
+    start_times = params[:event_comedian_form][:start_times]
     comedians = params[:event_comedian_form][:comedian_ids]
+binding.pry
     if @event.valid?
-      @event.save(comedians)
+      #@event.save(comedians)
+      @event.save(comedians, start_times)
       redirect_to root_path
     else
       render 'new'
@@ -58,7 +62,8 @@ class Admin::EventsController < ApplicationController
   #end
 
   def event_params
-    params.require(:event_comedian_form).permit(:theater_id, :start_time, :daynight_id, comedian_ids: [])
+#    params.require(:event_comedian_form).permit(:theater_id, :start_time, :daynight_id, comedian_ids: [])
+    params.require(:event_comedian_form).permit(:theater_id, start_times: [], :daynight_id, comedian_ids: [])
   end
 
   def event_update_params
