@@ -31,7 +31,11 @@
       <nav class="navbar navbar-expand-md bg-dark">
           <div class="d-inline-flex list-left">
             <a class="nevbar-brand logo-mini"><%= image_tag("logo_mini.jpg", class: "img-fluid", id: "navbar-logo") %></a>
-            <p class="text-white">ざぶとんだより〜寄席情報アプリ〜</p>
+            <% if request.path == '/' %>
+              <p class="text-white">ざぶとんだより〜寄席情報アプリ〜</p>
+            <% else %>
+              <p class="text-white">ざぶとんだより〜寄席情報アプリ〜 <%= link_to "トップページへ戻る", root_path, class: "text-primary" %></p>
+            <% end %>
           </div>
           <button class="navbar-toggler btn-outline-white" type="button" data-toggle="collapse" data-target="#menu">
             <p class="m-auto text-white">MENU</p>
