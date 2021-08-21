@@ -1,12 +1,11 @@
 <br>
 <br>
 <form>
-<div class="col-7 m-auto devise_doby">
+<div class="col-7 m-auto devise_body">
   <h3 class="title"><%= t('.sign_up') %></h3>
+  <%= bootstrap_devise_error_messages! %>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= bootstrap_devise_error_messages! %>
-
     <div class="form-group">
       <%= f.label :ニックネーム %>
       <%= f.text_field :nickname, autofocus: true, autocomplete: 'nickname', class: 'form-control' %>
