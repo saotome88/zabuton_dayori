@@ -42,43 +42,135 @@
   <!-- *** 演芸場タブ *** -->
   <div class="d-flex theaters">
       <ul class="nav nav-pills ml-auto">
+        <!-- activeにする演芸場の分岐を記述する -->
+        <% if @show.theater_id == 1 %>
           <li class="nav-item">
-              <!-- *** アクティブの選択問題*** -->
-              <a class="btn btn-outline-secondary active text-white theater" href="#shinjuku" data-toggle="tab">新宿末廣亭</a>
+            <a class="btn btn-outline-secondary text-white theater active" href="#shinjuku" data-toggle="tab">新宿末廣亭</a>
           </li>
           <li class="nav-item">
-              <a class="btn btn-outline-secondary text-white theater" href="#ikebukuro" data-toggle="tab">池袋演芸場</a>
+            <a class="btn btn-outline-secondary text-white theater" href="#ikebukuro" data-toggle="tab">池袋演芸場</a>
           </li>
           <li class="nav-item">
-              <a class="btn btn-outline-secondary text-white theater" href="#asakusa" data-toggle="tab">浅草演芸ホール</a>
+            <a class="btn btn-outline-secondary text-white theater" href="#asakusa" data-toggle="tab">浅草演芸ホール</a>
           </li>
           <li class="nav-item ueno">
-              <a class="btn btn-outline-secondary text-white theater" href="#ueno" data-toggle="tab">上野鈴本</a>
+            <a class="btn btn-outline-secondary text-white theater" href="#ueno" data-toggle="tab">上野鈴本</a>
           </li>
+        <% elsif @show.theater_id == 2 %>
+          <li class="nav-item">
+            <a class="btn btn-outline-secondary text-white theater" href="#shinjuku" data-toggle="tab">新宿末廣亭</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-secondary text-white theater active" href="#ikebukuro" data-toggle="tab">池袋演芸場</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-secondary text-white theater" href="#asakusa" data-toggle="tab">浅草演芸ホール</a>
+          </li>
+          <li class="nav-item ueno">
+            <a class="btn btn-outline-secondary text-white theater" href="#ueno" data-toggle="tab">上野鈴本</a>
+          </li>
+        <% elsif @show.theater_id == 3 %>
+          <li class="nav-item">
+            <a class="btn btn-outline-secondary text-white theater" href="#shinjuku" data-toggle="tab">新宿末廣亭</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-secondary text-white theater" href="#ikebukuro" data-toggle="tab">池袋演芸場</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-secondary text-white theater active" href="#asakusa" data-toggle="tab">浅草演芸ホール</a>
+          </li>
+          <li class="nav-item ueno">
+            <a class="btn btn-outline-secondary text-white theater" href="#ueno" data-toggle="tab">上野鈴本</a>
+          </li>
+        <% else @show.theater_id == 4 %>
+          <li class="nav-item">
+            <a class="btn btn-outline-secondary text-white theater" href="#shinjuku" data-toggle="tab">新宿末廣亭</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-secondary text-white theater" href="#ikebukuro" data-toggle="tab">池袋演芸場</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-secondary text-white theater" href="#asakusa" data-toggle="tab">浅草演芸ホール</a>
+          </li>
+          <li class="nav-item ueno">
+            <a class="btn btn-outline-secondary text-white theater active" href="#ueno" data-toggle="tab">上野鈴本</a>
+          </li>
+        <% end %>
       </ul>
   </div>
 
   <!-- *** タブの中身-選択した日付@showのデータを表示させる-カレンダーのために@eventsも渡す *** -->
   <div class="tab-content row flex-nowrap ml-3 mr-3">
-    <!-- *** 新宿末廣亭 *** -->
-    <div id="shinjuku" class="tab-pane active col-12">
-      <%= render partial: "shinjuku_show", locals: { shows: @shows, selectday: @show.start_time, events: @events} %>
-    </div>
-
-    <!-- *** 池袋演芸場 *** -->
-    <div id="ikebukuro" class="tab-pane col-12">
-      <%= render partial: "ikebukuro_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
-    </div>
-
-    <!-- *** 浅草演芸ホール *** -->
-    <div id="asakusa" class="tab-pane col-12">
-      <%= render partial: "asakusa_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
-    </div>
-
-    <!-- *** 上野広小路亭 *** -->
-    <div id="ueno" class="tab-pane col-12">
-      <%= render partial: "ueno_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
-    </div>
+    <!-- activeにする演芸場の分岐を記述する -->
+    <% if @show.theater_id == 1 %>
+      <!-- *** 新宿末廣亭 *** -->
+      <div id="shinjuku" class="tab-pane col-12 active">
+        <%= render partial: "shinjuku_show", locals: { shows: @shows, selectday: @show.start_time, events: @events} %>
+      </div>
+      <!-- *** 池袋演芸場 *** -->
+      <div id="ikebukuro" class="tab-pane col-12">
+        <%= render partial: "ikebukuro_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
+      </div>
+      <!-- *** 浅草演芸ホール *** -->
+      <div id="asakusa" class="tab-pane col-12">
+        <%= render partial: "asakusa_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
+      </div>
+      <!-- *** 上野広小路亭 *** -->
+      <div id="ueno" class="tab-pane col-12">
+        <%= render partial: "ueno_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
+      </div>
+    <% elsif @show.theater_id == 2 %>
+      <!-- *** 新宿末廣亭 *** -->
+      <div id="shinjuku" class="tab-pane col-12">
+        <%= render partial: "shinjuku_show", locals: { shows: @shows, selectday: @show.start_time, events: @events} %>
+      </div>
+      <!-- *** 池袋演芸場 *** -->
+      <div id="ikebukuro" class="tab-pane col-12 active">
+        <%= render partial: "ikebukuro_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
+      </div>
+      <!-- *** 浅草演芸ホール *** -->
+      <div id="asakusa" class="tab-pane col-12">
+        <%= render partial: "asakusa_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
+      </div>
+      <!-- *** 上野広小路亭 *** -->
+      <div id="ueno" class="tab-pane col-12">
+        <%= render partial: "ueno_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
+      </div>
+    <% elsif @show.theater_id == 3 %>
+      <!-- *** 新宿末廣亭 *** -->
+      <div id="shinjuku" class="tab-pane col-12">
+        <%= render partial: "shinjuku_show", locals: { shows: @shows, selectday: @show.start_time, events: @events} %>
+      </div>
+      <!-- *** 池袋演芸場 *** -->
+      <div id="ikebukuro" class="tab-pane col-12">
+        <%= render partial: "ikebukuro_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
+      </div>
+      <!-- *** 浅草演芸ホール *** -->
+      <div id="asakusa" class="tab-pane col-12 active">
+        <%= render partial: "asakusa_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
+      </div>
+      <!-- *** 上野広小路亭 *** -->
+      <div id="ueno" class="tab-pane col-12">
+        <%= render partial: "ueno_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
+      </div>
+    <% else @show.theater_id == 4 %>
+      <!-- *** 新宿末廣亭 *** -->
+      <div id="shinjuku" class="tab-pane col-12">
+        <%= render partial: "shinjuku_show", locals: { shows: @shows, selectday: @show.start_time, events: @events} %>
+      </div>
+      <!-- *** 池袋演芸場 *** -->
+      <div id="ikebukuro" class="tab-pane col-12">
+        <%= render partial: "ikebukuro_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
+      </div>
+      <!-- *** 浅草演芸ホール *** -->
+      <div id="asakusa" class="tab-pane col-12">
+        <%= render partial: "asakusa_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
+      </div>
+      <!-- *** 上野広小路亭 *** -->
+      <div id="ueno" class="tab-pane col-12 active">
+        <%= render partial: "ueno_show", locals: { shows: @shows, selectday: @show.start_time, events: @events } %>
+      </div>
+    <% end %>
   </div><%# タブの中身の終了 %>
 
 <br>
