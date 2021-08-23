@@ -51,40 +51,45 @@ Ruby/Ruby on Rails/MySQL/Github/Visual Studio Code/html&Scss
 
 
 # 実装した機能
-#### ユーザーログイン機能
+#### ユーザー管理機能
+新規登録/ログイン/ログアウト(※新規登録機能は現在修正中です)
+![85382ed00b4d9c723ce93aae0f2d080f](https://user-images.githubusercontent.com/80328215/130374907-1b14c803-97ca-4062-845c-5fdf64bc1b6e.gif)
   
-
 #### Bootstrapによるレスポンシブデザイン  
-
+![d93435e92d20dd3ae6f08c4bc57c5264](https://user-images.githubusercontent.com/80328215/130375315-7a7fc86a-e9a5-4aef-a875-ef114bce69f8.gif)
 
 #### タブの切り替え表示
-
+![f552d2d9dd7ed2452eda9308d65094bc](https://user-images.githubusercontent.com/80328215/130376408-56788180-ac40-47bd-ba72-1d3bd187b5b4.gif)
 
 #### カレンダーと日付選択による切り替え表示
-
+![calendar](https://user-images.githubusercontent.com/80328215/130376513-76019a74-2a43-4a2e-b75c-8f128b002d1e.gif)
 
 #### GoogleMap API実装とTwitter表示
-
+![twitter](https://user-images.githubusercontent.com/80328215/130376721-c58953ea-56e2-4263-96e9-1f7deb34a95f.gif)
 
 #### いいね機能
+![good](https://user-images.githubusercontent.com/80328215/130376676-864f5464-7d65-4c38-91b3-142db623cf58.gif)
 
 
 #### MyPageいいね一覧表示
-
+![mypage](https://user-images.githubusercontent.com/80328215/130376750-e8902d4c-88ba-4c66-8a4a-091ed91d41d3.gif)
 
 #### 管理者の投稿機能
-
+![post](https://user-images.githubusercontent.com/80328215/130377084-57c74849-39ff-4c97-9d96-977a65cf9ab5.gif)
   
-
+  
 # これから実装する予定の機能
 本アプリ”ざぶとんだより”は開発中のため、下記の機能を今後実装し、2021年中に実際に友人と協力して運営をする予定です。
-* 管理者の投稿編集と削除機能
+* 管理者の投稿編集機能と削除機能
+* ユーザー新規登録の不具合修正
+* 管理者の投稿機能で日付を複数指定の一括登録
 * マイページのメモ機能
 * SNSログイン機能
 * 非同期通信によるいいね機能
+* リアクションボタンを「いいね」以外を作成する
 
 # データベース設計
-<img width="703" alt="スクリーンショット 2021-08-06 1 18 32" src="https://user-images.githubusercontent.com/80328215/128385231-6bc1c11c-2ff1-44e5-b204-2c22eab4c9c6.png">
+![スクリーンショット 2021-08-23 10 33 27](https://user-images.githubusercontent.com/80328215/130378323-9eaffe8a-8d59-43e3-8339-363b34f333ae.png)
 
 # ローカルでの動作方法
 * ruby 2.6.5
@@ -100,10 +105,13 @@ Ruby/Ruby on Rails/MySQL/Github/Visual Studio Code/html&Scss
   
 # 各テーブルのカラムとアソシエーション一覧
 ## Usersテーブル
-| Colum              | Type   | Options                   |
-|--------------------|--------|---------------------------|
-| nickname           | string | null: false               |
-| encrypted_password | string | null: false               |
+| Colum              | Type    | Options                   |
+|--------------------|---------|---------------------------|
+| email              | string  | null: false               |
+| nickname           | string  | null: false               |
+| encrypted_password | string  | null: false               |
+| admin              | boolean |                           |
+* adminはdefault: false
 
 ### Association
 -has_many :reaction_likes
@@ -115,15 +123,17 @@ Ruby/Ruby on Rails/MySQL/Github/Visual Studio Code/html&Scss
 -has_many :memos
   
 -has_many :mystages
-
-
+  
+  
 ## Eventsテーブル
 | Colum              | Type       | Options                        |
 |--------------------|------------|--------------------------------|
-| theatername        | string     | null: false                    |
-| startday           | date       | null: false                    |
-| daynight           | string     | null: false                    |
-
+| theater_id         | integer    | null: false                    |
+| start_time         | date       | null: false                    |
+| daynight_id        | integer    | null: false                    |
+* theaterはActivehashで管理するためinteger型にする
+* daynightはActivehashで管理するためinteger型にする
+  
 ### Association
 -has_many :reaction_likes
   
@@ -137,74 +147,47 @@ Ruby/Ruby on Rails/MySQL/Github/Visual Studio Code/html&Scss
 -has_many :reaction_hopes
   
 -has_many :reaction_pasts
-
-
+  
+  
 ## EventComediansテーブル
 | Colum         | Type       | Options                        |
 |---------------|------------|--------------------------------|
 | event         | references | null: false, foreign_key: true |
-| comedian_id   | intger     | null: false                    |
-*event_comedianはActivehashで管理するため、integer型にする。
-※comedianクラスに名前の保存。event_comesianクラスは中間テーブルとなる。
+| comedian_id   | integer     | null: false                   |
+* event_comedianはActivehashで管理するためinteger型にする
+* comedianクラスに芸人の名前の保存
+* event_comesianクラスは中間テーブルとなる。
 
 ### Association
 -belongs_to :event
   
 -belongs_to :comedian_id
-
-
+  
+  
 ## Reaction_likesテーブル
 | Colum       | Type       | Options                        |
 |-------------|------------|--------------------------------|
-| user        | references |              foreign_key: true |
+| user        | references | null: false, foreign_key: true |
 | event       | references | null: false, foreign_key: true |
-*リアクションボタンは誰でも押せるようにするため、userカラムにnullは定義しない
-
+  
 ### Association
 -belongs_to :user
   
 -belongs_to :event
-
-
-## Reaction_hopesテーブル
-| Colum       | Type       | Options                        |
-|-------------|------------|--------------------------------|
-| user        | references |              foreign_key: true |
-| event       | references | null: false, foreign_key: true |
-*リアクションボタンは誰でも押せるようにするためnullは定義しない
-
-### Association
--belongs_to :user
   
--belongs_to :event
-
-
-## Reaction_pastsテーブル
-| Colum       | Type       | Options                        |
-|-------------|------------|--------------------------------|
-| user        | references |              foreign_key: true |
-| event       | references | null: false, foreign_key: true |
-## リアクションボタンは誰でも押せるようにするためnullは定義しない
-
-### Association
--belongs_to :user
   
--belongs_to :event
-
-
 ## Memosテーブル
 | Colum         | Type       | Options                        |
 |---------------|------------|--------------------------------|
-| user          | references | null: false, foreign_key: true |
-| event         | references | null: false, foreign_key: true |
-| memo          | text       | null: false                    |
+| reaction_like | references | null: false, foreign_key: true |
+| text          | text       | null: false                    |
 
 ### Association
 -belongs_to :user
   
 -belongs_to :event
-
-
+  
+  
 ## Mystagesテーブル
 | Colum         | Type       | Options                        |
 |---------------|------------|--------------------------------|
