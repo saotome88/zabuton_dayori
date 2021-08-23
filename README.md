@@ -9,8 +9,8 @@ https://zabuton-dayori.herokuapp.com/
 【テストアカウント】
 <br>
 e-mail: test@test.com  
-password: 1234asdf  
-nicknama: サンプル太郎  
+password: test123  
+nicknama: テスト太郎  
 
 
 # はじめに
