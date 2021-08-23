@@ -89,7 +89,8 @@ Ruby/Ruby on Rails/MySQL/Github/Visual Studio Code/html&Scss
 * リアクションボタンを「いいね」以外を作成する
 
 # データベース設計
-![スクリーンショット 2021-08-23 10 33 27](https://user-images.githubusercontent.com/80328215/130378323-9eaffe8a-8d59-43e3-8339-363b34f333ae.png)
+![er0823](https://user-images.githubusercontent.com/80328215/130378544-6b79578a-96b7-4848-96de-654afbab85a9.png)
+
 
 # ローカルでの動作方法
 * ruby 2.6.5
