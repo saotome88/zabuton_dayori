@@ -52,7 +52,7 @@ Ruby/Ruby on Rails/MySQL/Github/Visual Studio Code/html&Scss
 
 # 実装した機能
 #### ユーザー管理機能
-新規登録/ログイン/ログアウト(※新規登録機能は現在修正中です)
+新規登録/ログイン/ログアウト
 ![85382ed00b4d9c723ce93aae0f2d080f](https://user-images.githubusercontent.com/80328215/130374907-1b14c803-97ca-4062-845c-5fdf64bc1b6e.gif)
   
 #### Bootstrapによるレスポンシブデザイン  
@@ -81,7 +81,6 @@ Ruby/Ruby on Rails/MySQL/Github/Visual Studio Code/html&Scss
 # これから実装する予定の機能
 本アプリ”ざぶとんだより”は開発中のため、下記の機能を今後実装し、2021年中に実際に友人と協力して運営をする予定です。
 * 管理者の投稿編集機能と削除機能
-* ユーザー新規登録の不具合修正
 * 管理者の投稿機能で日付を複数指定の一括登録
 * マイページのメモ機能
 * SNSログイン機能
